@@ -1,0 +1,176 @@
+
+\chapter{Cahier des charges}
+
+\section{Introduction}
+
+Ce chapitre présente le cahier des charges du projet \textbf{AutoStory}, en définissant le contexte, les objectifs, les contraintes et les livrables attendus. Il constitue le document de référence pour l'ensemble de la réalisation du projet.
+
+\section{Présentation du besoin}
+
+\subsection{Contexte général}
+
+Le secteur automobile et le marketing digital font face à un défi majeur : produire rapidement et à moindre coût des contenus publicitaires de qualité pour promouvoir les véhicules. Les méthodes traditionnelles de production vidéo nécessitent :
+
+\begin{itemize}
+    \item Des rédacteurs pour créer des scripts publicitaires
+    \item Des comédiens ou voix-off professionnelles pour l'enregistrement audio
+    \item Des monteurs vidéo pour composer les contenus finaux
+    \item Des délais importants (plusieurs jours à plusieurs semaines)
+    \item Des budgets conséquents (plusieurs milliers d'euros par vidéo)
+\end{itemize}
+
+\subsection{Besoin identifié}
+
+Face à ce constat, le projet AutoStory vise à développer un \textbf{système automatisé de génération de vidéos publicitaires} capable de :
+
+\begin{itemize}
+    \item Générer automatiquement des scripts narratifs techniques et cohérents
+    \item Synthétiser une voix-off en français de qualité acceptable
+    \item Composer automatiquement une vidéo avec images, textes et audio
+    \item Adapter le style narratif au type de véhicule (sportif, luxe, familial, écologique)
+    \item Produire une vidéo complète en moins de 5 minutes
+\end{itemize}
+
+\section{Objectifs du système AutoStory}
+
+\subsection{Objectifs fonctionnels}
+
+Le système AutoStory doit permettre de :
+
+\begin{enumerate}
+    \item \textbf{Générer des scripts narratifs} : À partir des caractéristiques techniques d'un véhicule (marque, modèle, motorisation, équipements), le système génère un script publicitaire technique de 1500 à 2000 caractères
+    \item \textbf{Synthétiser la voix-off} : Convertir le script généré en fichier audio avec une voix française naturelle
+    \item \textbf{Composer la vidéo finale} : Assembler automatiquement images du véhicule, textes animés et voix-off en une vidéo de 60 à 120 secondes
+    \item \textbf{Classifier le style du véhicule} : Identifier automatiquement le style (sportif, luxe, familial, écologique) pour adapter le ton narratif
+    \item \textbf{Traiter plusieurs véhicules en batch} : Permettre la génération de multiples vidéos en série
+\end{enumerate}
+
+\subsection{Objectifs techniques}
+
+\begin{itemize}
+    \item Développer un backend Python modulaire et maintenable
+    \item Intégrer l'API Google Gemini 2.5 Flash pour la génération de scripts
+    \item Utiliser gTTS pour la synthèse vocale gratuite
+    \item Implémenter MoviePy pour la composition vidéo programmatique
+    \item Concevoir une architecture extensible facilitant l'ajout de nouvelles fonctionnalités
+    \item Développer un frontend React/TypeScript moderne et intuitif
+\end{itemize}
+
+\section{Contraintes du projet}
+
+\subsection{Contraintes techniques}
+
+\begin{itemize}
+    \item \textbf{Temps de génération} : La génération d'une vidéo complète ne doit pas excéder 5 minutes
+    \item \textbf{Qualité des scripts} : Les scripts générés doivent être cohérents, techniques et sans erreurs factuelles
+    \item \textbf{Qualité audio} : La voix synthétisée doit être compréhensible et fluide
+    \item \textbf{Format vidéo} : Vidéos au format MP4, résolution HD (1920x1080), durée 60-120 secondes
+    \item \textbf{Coût} : Utilisation de technologies gratuites ou à faible coût (Gemini gratuit, gTTS gratuit)
+\end{itemize}
+
+\subsection{Contraintes temporelles}
+
+\begin{itemize}
+    \item Durée du projet : 1 semestre académique
+    \item Backend Python : priorité absolue (finalisé à 95\%)
+    \item Frontend React : en cours de développement (50\%)
+\end{itemize}
+
+\subsection{Contraintes technologiques}
+
+\begin{itemize}
+    \item Python 3.13
+    \item Compatible Linux, macOS et Windows
+    \item Dépendances open-source et gratuites
+    \item Gestion sécurisée des clés API
+\end{itemize}
+
+\section{Périmètre fonctionnel}
+
+\subsection{Fonctionnalités incluses}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{0.4\linewidth}|p{0.5\linewidth}|}
+\hline
+\textbf{Fonctionnalité} & \textbf{Description} \\
+\hline
+Génération de scripts & Création automatique de scripts narratifs techniques via Gemini AI \\
+\hline
+Synthèse vocale & Conversion texte-voix en français avec gTTS \\
+\hline
+Composition vidéo & Assemblage automatique images + audio + textes avec MoviePy \\
+\hline
+Classification des styles & Identification automatique du style du véhicule \\
+\hline
+Traitement batch & Génération de plusieurs vidéos en série \\
+\hline
+Interface utilisateur & Frontend React pour saisie des caractéristiques et prévisualisation \\
+\hline
+\end{tabular}
+\caption{Fonctionnalités incluses dans le périmètre}
+\end{table}
+
+\subsection{Fonctionnalités exclues (perspectives futures)}
+
+\begin{itemize}
+    \item Voix commerciales de haute qualité (type ElevenLabs, Amazon Polly)
+    \item Support multilingue (anglais, arabe, espagnol)
+    \item Base de données de véhicules intégrée
+    \item Génération de variations A/B testing
+    \item Publication automatique sur réseaux sociaux
+\end{itemize}
+
+\section{Livrables attendus}
+
+\subsection{Livrables techniques}
+
+\begin{enumerate}
+    \item \textbf{Backend Python} :
+    \begin{itemize}
+        \item Module \texttt{autostory\_tech.py} (API REST)
+        \item Module \texttt{technical\_storytelling.py} (génération scripts)
+        \item Module \texttt{car\_styles.py} (classification)
+        \item Module \texttt{video\_generator.py} (composition vidéo)
+        \item Fichiers de configuration et utilitaires
+    \end{itemize}
+    
+    \item \textbf{Frontend React} (en cours de développement) :
+    \begin{itemize}
+        \item Interface de saisie des caractéristiques du véhicule
+        \item Composant de prévisualisation vidéo
+        \item Dashboard de gestion
+    \end{itemize}
+    
+    \item \textbf{Documentation technique} :
+    \begin{itemize}
+        \item Guide d'installation et de configuration
+        \item Documentation des APIs
+        \item Exemples d'utilisation
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Livrables académiques}
+
+\begin{itemize}
+    \item Rapport de PFA complet (45-55 pages)
+    \item Diagrammes UML (cas d'utilisation, classes, séquence)
+    \item Présentation PowerPoint pour la soutenance
+    \item Code source complet sur dépôt Git
+\end{itemize}
+
+\section{Critères de succès}
+
+Le projet sera considéré comme réussi si :
+
+\begin{itemize}
+    \item Le backend Python génère des vidéos fonctionnelles en moins de 5 minutes
+    \item Les scripts générés sont cohérents et adaptés au style du véhicule
+    \item La qualité audio est acceptable pour un usage professionnel
+    \item L'architecture logicielle est modulaire et documentée
+    \item Le frontend React (même partiellement développé) démontre la faisabilité de l'interface
+\end{itemize}
+
+\section{Conclusion}
+
+Ce cahier des charges définit clairement les objectifs, le périmètre et les contraintes du projet AutoStory. Il servira de référence tout au long du développement et guidera les choix techniques et architecturaux détaillés dans les chapitres suivants.

@@ -1,0 +1,417 @@
+\chapter{Analyse et Conception}
+
+% Introduction non numérotée mais avec le même style
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+
+Dans ce chapitre, nous allons présenter l'analyse et la conception de notre solution. Cette phase cruciale du développement nous permet de définir l'architecture globale du système, de modéliser les différents composants et leurs interactions, ainsi que de spécifier les fonctionnalités à travers différents diagrammes UML.
+
+L'objectif de cette phase est de traduire les besoins identifiés lors de l'analyse fonctionnelle en une solution technique cohérente et réalisable. Nous commencerons par présenter l'architecture générale de la solution, puis nous détaillerons la conception à travers une approche de modélisation structurée.
+
+% Section 1 - Architecture de la solution
+\section{Architecture de la solution}
+
+\subsection{Vue d'ensemble de l'architecture}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{images/chapter-4/architecture.png}
+\caption{Architecture du projet}
+\label{fig:architecture}
+\end{figure}
+
+Pour architecturer notre projet, nous avons adopté une architecture orientée \textbf{microservices} afin de garantir l'évolutivité et la flexibilité nécessaires.  
+Cette architecture se compose de plusieurs services indépendants, chacun dédié à un rôle spécifique, collaborant via une \textbf{passerelle (gateway)} centralisée qui orchestre les communications et assure une gestion sécurisée des requêtes.  
+
+Un module commun (\textbf{common}) est également utilisé pour partager des fonctionnalités transversales, telles que les utilitaires ou les configurations standards, réduisant ainsi la redondance et favorisant la cohérence entre les services.  
+
+Cette approche offre de nombreux avantages :  
+\begin{itemize}
+    \item une meilleure modularité,  
+    \item une facilité de déploiement et de maintenance,  
+    \item une agilité accrue pour répondre aux besoins évolutifs de l'entreprise.  
+\end{itemize}
+
+Chaque service peut être développé, testé, déployé et mis à jour indépendamment, favorisant une intégration continue et un déploiement continu alignés sur les pratiques \textbf{DevOps} adoptées par l'entreprise.
+
+\subsection{Architecture globale du projet}
+
+L'architecture de notre projet est conçue pour offrir une gestion modulaire et évolutive, intégrant à la fois des composants centraux et des microservices spécifiques.  
+
+Le projet \textbf{mc-starter} est le cœur de notre architecture et fournit l'infrastructure de base pour le déploiement et l'exécution de l'application. Il est structuré en deux principaux packages :  
+
+\begin{itemize}
+    \item \textbf{mc-starter-app} : contient les fichiers de configuration nécessaires pour l'initialisation et la gestion des différents environnements (développement, test, production). Les fichiers comme \texttt{application.yml} définissent les paramètres globaux et permettent de configurer les services requis.  
+    \item \textbf{mc-starter-core} : héberge la logique métier de l'application, avec des sous-packages spécialisés.  
+\end{itemize}
+
+\subsection{Approche de sécurité de l’application}
+
+Pour renforcer la sécurité de l’application, nous avons choisi, comme pour tous les projets de \textbf{Marketing Confort}, d’utiliser \textbf{Keycloak}, une solution open source dédiée à la gestion des identités et des accès.  
+
+Keycloak permet de centraliser l’authentification des utilisateurs et d’offrir des fonctionnalités essentielles telles que :  
+\begin{itemize}
+    \item l’authentification unique (SSO),  
+    \item l’authentification multifactorielle (MFA),  
+    \item une gestion fine des rôles, permissions et tokens d’accès.  
+\end{itemize}
+
+Cette intégration nous a permis de sécuriser efficacement l’accès aux différentes parties de l’application tout en simplifiant la connexion pour les utilisateurs.  
+Keycloak s’avère être un atout précieux dans le cadre d’une \textbf{architecture microservices}, où la sécurité et la gestion des accès doivent être homogènes et centralisées.
+
+\begin{figure}[h]
+\centering
+ \includegraphics[width=0.8\textwidth]{images/chapter-4/approcheSecurite.png}
+\caption{Approche de sécurité de l’application}
+\label{fig:approche_securite}
+\end{figure}
+
+% Section 2 - Conception et modélisation
+\section{Conception et modélisation}
+
+La phase de conception se base sur une approche de modélisation UML (Unified Modeling Language) qui nous permet de représenter de manière claire et précise les différents aspects de notre système. Cette modélisation comprend trois types de diagrammes principaux qui couvrent les aspects fonctionnels, structurels et comportementaux de la solution.
+
+\subsection{Diagrammes de cas d'utilisation}
+
+Les diagrammes de cas d'utilisation UML modélisent les interactions entre les acteurs (utilisateurs ou systèmes externes) et les fonctionnalités d'une application. Ils offrent une vision globale du comportement attendu du système, facilitant la communication entre parties prenantes et guidant le développement.
+
+\subsubsection{Diagramme de cas d’utilisation du module gestion des réservations}
+
+Le diagramme ci-dessous illustre les interactions du \textbf{Client} avec le système de réservation de véhicules, incluant :
+\begin{itemize}
+    \item Consulter la liste des véhicules disponibles
+    \item Sélectionner un véhicule (avec options de filtrage)
+    \item Effectuer une réservation (incluant choix des dates/lieu, options supplémentaires)
+    \item Modifier/Annuler une réservation
+    \item Consulter l'historique
+\end{itemize}
+
+Relations clés :
+\begin{itemize}
+    \item \textbf{Inclusion :} L'authentification est requise pour certaines actions
+    \item \textbf{Extension :} Le choix d'options supplémentaires (GPS, assurance) étend le cas de base « Effectuer une réservation »
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+ \includegraphics[width=1\textwidth]{images/chapter-4/usecaseReservation.png}
+\caption{Diagramme de cas d'utilisation du module réservation}
+\label{fig:use_case_reservation}
+\end{figure}
+
+\paragraph{Cas d'utilisation : Effectuer une réservation}\mbox{}\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{
+10cm}|}
+\hline
+\textbf{Description} & Permet au client de réserver un véhicule après sélection. \\ \hline
+\textbf{Acteurs} & Client \\ \hline
+\textbf{Préconditions} & Client authentifié. \newline Véhicule disponible aux dates choisies. \\ \hline
+\textbf{Scénario nominal} & 
+1. Client sélectionne un véhicule. \newline
+2. Choisit dates/lieu. \newline
+3. Ajoute des options (GPS). \newline
+4. Valide le paiement. \newline
+5. Reçoit une confirmation. \\ \hline
+\textbf{Scénario alternatif} & Dates indisponibles $\rightarrow$ le système propose des créneaux alternatifs. \\ \hline
+\end{tabular}
+\caption{Cas d'utilisation : Effectuer une réservation}
+\label{tab:use_case_reservation1}
+\end{table}
+
+\paragraph{Cas d'utilisation : Modifier une réservation}\mbox{}\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Description} & Permet de modifier les détails d'une réservation existante. \\ \hline
+\textbf{Acteurs} & Client, Agent \\ \hline
+\textbf{Préconditions} & Réservation existante, non débutée. \\ \hline
+\textbf{Scénario nominal} & 
+1. Client accède à « Mes réservations ». \newline
+2. Modifie les dates. \newline
+3. Système calcule le coût ajusté. \newline
+4. Confirme les changements. \\ \hline
+\textbf{Scénario alternatif} & Modification impossible (véhicule indisponible) $\rightarrow$ notification d'erreur. \\ \hline
+\end{tabular}
+\caption{Cas d'utilisation : Modifier une réservation}
+\label{tab:use_case_reservation2}
+\end{table}
+
+\subsubsection{Diagramme de cas d’utilisation du module gestion des véhicules}
+
+Réservé aux \textbf{Agents} et \textbf{Administrateurs}, ce diagramme couvre :
+\begin{itemize}
+    \item Ajouter / Modifier / Supprimer un véhicule
+    \item Gérer la disponibilité (maintenance, calendrier)
+    \item Assigner un véhicule à une agence
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+ \includegraphics[width=0.8\textwidth]{images/chapter-4/useCaseVehicule.png}
+\caption{Diagramme de cas d'utilisation du module véhicule}
+\label{fig:use_case_vehicule}
+\end{figure}
+
+\paragraph{Cas d'utilisation : Ajouter un véhicule}\mbox{}\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Description} & Ajoute un nouveau véhicule au catalogue. \\ \hline
+\textbf{Acteurs} & Administrateur, Agent \\ \hline
+\textbf{Préconditions} & Authentifié avec droits d'édition. \\ \hline
+\textbf{Scénario nominal} & 
+1. Remplit le formulaire (modèle, plaque, prix). \newline
+2. Uploade des photos. \newline
+3. Valide. \newline
+4. Système ajoute le véhicule. \\ \hline
+\textbf{Scénario alternatif} & Champs incomplets $\rightarrow$ formulaire bloqué jusqu'à correction. \\ \hline
+\end{tabular}
+\caption{Cas d'utilisation : Ajouter un véhicule}
+\label{tab:use_case_vehicule1}
+\end{table}
+
+\paragraph{Cas d'utilisation : Assigner un véhicule à une agence}\mbox{}\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Description} & Affecte un véhicule à une agence spécifique. \\ \hline
+\textbf{Acteurs} & Administrateur \\ \hline
+\textbf{Préconditions} & Véhicule et agence existants. \\ \hline
+\textbf{Scénario nominal} & 
+1. Sélectionne le véhicule. \newline
+2. Choisit l'agence. \newline
+3. Valide. \newline
+4. Système met à jour la disponibilité. \\ \hline
+\textbf{Scénario alternatif} & Agence déjà saturée $\rightarrow$ proposition d'une autre agence. \\ \hline
+\end{tabular}
+\caption{Cas d'utilisation : Assigner un véhicule à une agence}
+\label{tab:use_case_vehicule2}
+\end{table}
+
+\noindent\textbf{Objectif :} Ces diagrammes servent de base pour les phases de développement et de tests, en clarifiant les attentes fonctionnelles.
+
+\subsubsection{Diagramme de cas d’utilisation du module gestion des agences}
+
+Réservé aux \textbf{Administrateurs}, ce diagramme couvre :
+\begin{itemize}
+    \item Consulter la liste des agences
+    \item Consulter les détails d'une agence spécifique
+    \item Suivre les performances
+    \item Ajouter une nouvelle agence
+    \item Modifier les détails d'une agence
+    \item Supprimer une agence
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+ \includegraphics[width=0.8\textwidth]{images/chapter-4/useCaseAgency.png}
+\caption{Diagramme de cas d'utilisation du module agences}
+\label{fig:use_case_agence}
+\end{figure}
+
+\paragraph{Cas d'utilisation : Ajouter une nouvelle agence}\mbox{}\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Description} & Ajoute une nouvelle agence au système. \\ \hline
+\textbf{Acteurs} & Administrateur \\ \hline
+\textbf{Préconditions} & Authentifié avec droits d’administration. \\ \hline
+\textbf{Scénario nominal} & 
+1. Remplit le formulaire (nom, adresse, contact, etc.). \newline
+2. Valide le formulaire. \newline
+3. Le système enregistre l’agence dans la base de données. \\ \hline
+\textbf{Scénario alternatif} & Champs manquants ou invalides $\rightarrow$ message d’erreur et correction demandée. \\ \hline
+\end{tabular}
+\caption{Cas d'utilisation : Ajouter une nouvelle agence}
+\label{tab:use_case_agence1}
+\end{table}
+
+\paragraph{Cas d'utilisation : Consulter les détails d’une agence spécifique}\mbox{}\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Description} & Affiche toutes les informations relatives à une agence donnée. \\ \hline
+\textbf{Acteurs} & Administrateur \\ \hline
+\textbf{Préconditions} & L’agence existe dans la base de données. \\ \hline
+\textbf{Scénario nominal} & 
+1. Sélectionne une agence dans la liste. \newline
+2. Le système affiche les détails (nom, adresse, employés, véhicules liés, etc.). \\ \hline
+\textbf{Scénario alternatif} & Agence introuvable $\rightarrow$ message d’erreur. \\ \hline
+\end{tabular}
+\caption{Cas d'utilisation : Consulter les détails d’une agence}
+\label{tab:use_case_agence2}
+\end{table}
+
+\noindent\textbf{Objectif :} Ces diagrammes clarifient les fonctionnalités principales de la gestion des agences, et serviront de référence pour le développement et les tests.
+
+\subsection{Diagrammes de séquence}
+
+Les diagrammes de séquence illustrent les interactions entre les objets et services du système dans un ordre chronologique, permettant de représenter les scénarios fonctionnels de bout en bout.
+
+\subsubsection{Diagramme de séquence – Processus d’authentification}
+
+Le diagramme ci-dessous illustre le scénario d’authentification de l’utilisateur au sein de l’application MobiLoca.  
+Il décrit les interactions entre le client, l’application mobile, la passerelle API, le système Keycloak (gestionnaire d’identité) et la base de données des utilisateurs.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{images/chapter-4/seqAuth.png}
+\caption{Diagramme de séquence – Processus d’authentification}
+\label{fig:seq_auth}
+\end{figure}
+
+L’utilisateur commence par saisir ses identifiants sur l’application mobile, qui sont ensuite vérifiés par Keycloak via la passerelle API.  
+Selon la validité des informations, un jeton d’accès sécurisé est délivré, ou un message d’erreur adapté est retourné en cas d’échec ou de compte désactivé.  
+Ce mécanisme garantit une authentification fiable et sécurisée, essentielle pour protéger l’accès à l’application.
+
+\subsubsection{Diagramme de séquence – Processus de réservation}
+
+Une fois connecté, l’utilisateur peut accéder à la fonctionnalité principale de MobiLoca : la réservation d’un véhicule électrique.  
+Le diagramme suivant illustre précisément ce processus clé, décrivant les interactions nécessaires pour sélectionner, réserver et confirmer une voiture via l’application.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{images/chapter-4/seqReservation.png}
+\caption{Diagramme de séquence – Processus de réservation}
+\label{fig:seq_reservation}
+\end{figure}
+
+Ce diagramme illustre le processus complet de réservation d’un véhicule électrique par un utilisateur via l’application MobiLoca, en mettant en évidence les échanges entre l’utilisateur, l’application mobile et les différents microservices composant l’architecture backend :
+
+\begin{enumerate}[label=\alph*.]
+    \item \textbf{Consultation du catalogue} : l’utilisateur interroge le microservice Véhicule via la passerelle API pour récupérer la liste des véhicules disponibles.
+    \item \textbf{Affichage des détails et options} : l’application récupère les détails du véhicule et ses packs/options (GPS, siège bébé, etc.) auprès du microservice Véhicule.
+    \item \textbf{Récupération des informations utilisateur} : l’application interroge le microservice Utilisateur pour obtenir ou mettre à jour les informations personnelles nécessaires.
+    \item \textbf{Ajout au panier} : l’utilisateur ajoute sa sélection, transmise au microservice Réservation pour un stockage temporaire.
+    \item \textbf{Paiement sécurisé} : l’application initie une transaction via le microservice Paiement et l’API Stripe. Selon le résultat, la réservation est confirmée ou rejetée.
+    \item \textbf{Confirmation de la réservation} : après paiement accepté, la réservation est créée dans le microservice Réservation, le statut du véhicule est mis à jour et un contrat est généré par le microservice Utilisateur, envoyé par email et application.
+\end{enumerate}
+
+Ce scénario garantit une expérience utilisateur fluide et sécurisée, en orchestrant plusieurs services pour gérer la disponibilité, la réservation et la facturation des véhicules, tout en assurant la cohérence et la réactivité du système.
+
+
+\subsection{Diagrammes de classes}
+
+Les diagrammes de classes représentent la structure statique du système en montrant les classes, leurs attributs, leurs méthodes et les relations entre elles.  
+Ils permettent de visualiser l’architecture des microservices et leurs dépendances internes.
+
+\subsubsection{Diagramme de classes de service gestion des utilisateurs}
+
+Ce diagramme de classes représente la structure du microservice utilisateur, qui centralise la gestion des différents types d’utilisateurs du système, notamment les clients, les agents enregistrés et les agents non enregistrés, en héritant tous de la classe principale \textbf{User}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{images/chapter-4/classUser.png}
+\caption{Diagramme de classes du module utilisateur}
+\label{fig:class_user}
+\end{figure}
+
+La classe \textbf{User} regroupe les informations personnelles (nom, email, téléphone, adresse, etc.).  
+Chaque utilisateur peut avoir plusieurs activités stockées dans \textbf{ActivityHistory}.  
+Les agents peuvent être associés à un ou plusieurs \textbf{Role}, chacun définissant un ensemble de \textbf{Permission}.  
+Chaque permission correspond à une action (lire, créer, mettre à jour, supprimer) sur un module spécifique du système.  
+Ce modèle met en œuvre un contrôle d’accès granulaire basé sur les rôles, permettant de sécuriser et d’adapter dynamiquement les autorisations selon les profils des utilisateurs.
+
+\subsubsection{Diagramme de classes de service gestion des réservations}
+
+Ce diagramme de classes illustre l’architecture du microservice de réservation, responsable de la gestion des processus de réservation de véhicules.  
+Il modélise deux types de réservation : \textbf{SingleReservation} (réservation simple) et \textbf{GlobalReservation} (réservation groupée), chacune associée à un client.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{images/chapter-4/classReservation.png}
+\caption{Diagramme de classes du module réservation}
+\label{fig:class_reservation}
+\end{figure}
+
+Chaque réservation est liée à un \textbf{Contrat}, qui formalise la relation avec le client, et à un \textbf{Deposit}, qui peut générer des pénalités en cas de non-respect des conditions contractuelles.  
+Le dépôt peut être payé par différents moyens (carte bancaire, PayPal, etc.) et suit un cycle de validation.
+
+\subsubsection{Diagramme de classes de service gestion des agences}
+
+Ce diagramme de classes représente la structure du microservice agence, qui centralise la gestion des agences de location de véhicules, incluant leurs informations opérationnelles, statistiques mensuelles et rapports de performance.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{images/chapter-4/classAgency.png}
+\caption{Diagramme de classes du module agence}
+\label{fig:class_agency}
+\end{figure}
+
+La classe principale \textbf{Agency} regroupe les informations fondamentales d'une agence (nom, email, téléphone, date de création, description, image, statut). Chaque agence possède une \textbf{Adresse} complète et des \textbf{OpeningHours} définissant ses horaires d'ouverture.
+
+Les agences génèrent des données mensuelles stockées dans \textbf{MonthlyData}, incluant le nombre de locations et le chiffre d'affaires. Le système permet également la création de \textbf{Report} (rapports) personnalisés pouvant inclure diverses statistiques (\textbf{StatisticType}) et être organisés en dossiers via \textbf{ReportFolder}.
+
+Chaque agence est associée à un gestionnaire (\textbf{managerId}), une liste d'agents (\textbf{agentIds}), une flotte de véhicules (\textbf{vehicleIds}) et des équipements (\textbf{equipmentIds}). Ce modèle permet une gestion complète des performances opérationnelles et financières des agences, avec une capacité avancée de reporting et d'analyse des données.
+
+\subsubsection{Diagramme de classes de service gestion des véhicules}
+
+Ce diagramme de classes modélise la structure du microservice responsable de la gestion des véhicules, de leurs performances, entretiens, équipements et dépenses.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{images/chapter-4/classVehicule.png}
+\caption{Diagramme de classes du module véhicule}
+\label{fig:class_vehicule}
+\end{figure}
+
+La classe centrale est \textbf{Vehicle}, qui regroupe les informations essentielles sur chaque véhicule (marque, modèle, année, type de carburant, nombre de places, etc.).  
+Chaque véhicule peut être enrichi via l'entité \textbf{VehicleEquipment}, qui permet d’associer des équipements intégrés (\textbf{BuiltInEquipment}) ou additionnels (\textbf{AddOnEquipment}), catégorisés selon \textbf{EquipmentCategory}.  
+
+Le suivi de l'activité des véhicules est organisé via la classe \textbf{CalendarActivities}, qui se décline en trois sous-types :  
+\begin{itemize}
+    \item \textbf{ReservationActivity} (liée à une réservation),
+    \item \textbf{MaintenanceActivity} (planification d’entretien),
+    \item \textbf{RegularActivity} (autres activités régulières).
+\end{itemize}
+
+La performance des véhicules est suivie via \textbf{VehiclePerformance}, incluant des mesures telles que le kilométrage, la consommation moyenne ou la vitesse maximale.  
+La classe \textbf{Expense} enregistre toutes les dépenses associées aux véhicules (carburant, assurance, réparation, etc.), avec leur \textbf{ExpenseCategory} et \textbf{ExpenseStatus} (Validée ou Rejetée).
+
+\subsubsection{Diagramme de classes du module Fleet}
+
+Ce diagramme de classes illustre l'architecture du microservice \textbf{Fleet}, responsable de la gestion post-réservation et du suivi opérationnel des véhicules.  
+Il modélise quatre entités principales : \textbf{Complaint} (réclamation), \textbf{FuelConsumption} (consommation de carburant), \textbf{Incident} et \textbf{MileageRecord} (enregistrement kilométrique).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{images/chapter-4/classFleet.png}
+\caption{Diagramme de classes du module Fleet}
+\label{fig:class_fleet}
+\end{figure}
+
+Chaque entité est associée à des énumérations spécifiques définissant leurs états et types.  
+Les réclamations (\textbf{Complaint}) peuvent être de différents types (facturation, dommages véhicule, qualité de service) et suivent un cycle de traitement avec des statuts allant de \texttt{OPEN} à \texttt{RESOLVED}.  
+Les incidents couvrent les pannes, dommages, accidents et vols, avec un suivi de leur traitement.  
+La consommation de carburant et les dépassements kilométriques sont liés au statut de paiement (\texttt{PENDING}/\texttt{BILLED}), permettant la facturation des frais supplémentaires.  
+
+Ainsi, ce module assure le suivi complet des événements post-location et la gestion des coûts additionnels.
+
+% ==========================
+% Conclusion non numérotée mais avec le même style
+\section*{Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
+
+Ce chapitre a présenté l'analyse et la conception complète de notre solution. L'architecture proposée répond aux besoins identifiés tout en garantissant la scalabilité, la maintenabilité et la performance du système.
+
+La modélisation UML réalisée à travers les diagrammes de cas d'utilisation, de classes et de séquence nous a permis de :
+\begin{itemize}
+    \item Clarifier les fonctionnalités attendues et les interactions avec les utilisateurs
+    \item Structurer l'organisation des données et des traitements
+    \item Définir précisément les flux d'exécution des principales fonctionnalités
+\end{itemize}
+
+Cette phase de conception constitue la base solide sur laquelle s'appuiera la phase d'implémentation présentée dans le chapitre suivant. Les choix architecturaux et les modèles définis guideront le développement et assureront la cohérence technique de la solution finale.
