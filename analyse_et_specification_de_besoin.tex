@@ -1,1 +1,215 @@
 \chapter{Analyse et Spécification des Besoins}
+
+\section{Introduction}
+
+Dans ce chapitre, nous présenterons l'analyse détaillée des besoins du projet AutoStory. Cette phase constitue une étape fondamentale dans le développement du système, car elle permet d'identifier et de formaliser les exigences fonctionnelles et non-fonctionnelles. Nous établirons également les spécifications techniques qui guideront la conception et l'implémentation de la solution.
+
+\section{Besoins fonctionnels}
+\label{sec:besoins-fonctionnels}
+
+Les besoins fonctionnels décrivent les fonctionnalités que le système AutoStory doit offrir aux utilisateurs.
+
+\subsection{Génération de scripts narratifs}
+\label{subsec:generation-scripts}
+
+\textbf{BF1 : Génération automatique de scripts publicitaires}
+\begin{itemize}
+    \item Le système doit générer des scripts narratifs techniques et cohérents pour des véhicules automobiles
+    \item Le script doit inclure des informations sur les caractéristiques techniques, le design et les innovations
+    \item La longueur du script doit être adaptée à une vidéo de 30-60 secondes
+    \item Le ton et le style doivent s'adapter au type de véhicule (sportif, luxe, familial, écologique)
+\end{itemize}
+
+\textbf{BF2 : Utilisation d'un Large Language Model}
+\begin{itemize}
+    \item Le système doit intégrer Google Gemini 2.5 Flash pour la génération de textes
+    \item Les prompts doivent être optimisés pour obtenir des résultats de qualité professionnelle
+    \item Le système doit gérer les erreurs de communication avec l'API Gemini
+\end{itemize}
+
+\subsection{Classification des véhicules}
+\label{subsec:classification-vehicules}
+
+\textbf{BF3 : Détection automatique du style de véhicule}
+\begin{itemize}
+    \item Le système doit classifier automatiquement les véhicules en catégories (sportif, luxe, familial, écologique)
+    \item La classification doit se baser sur les caractéristiques techniques et visuelles du véhicule
+    \item Le système doit adapter le ton narratif en fonction de la catégorie détectée
+\end{itemize}
+
+\subsection{Synthèse vocale}
+\label{subsec:synthese-vocale}
+
+\textbf{BF4 : Conversion texte vers audio}
+\begin{itemize}
+    \item Le système doit convertir le script généré en audio avec une voix française naturelle
+    \item La qualité audio doit être professionnelle (format MP3, bitrate adapté)
+    \item La synthèse vocale doit gérer correctement la prononciation des termes techniques automobiles
+\end{itemize}
+
+\subsection{Composition vidéo}
+\label{subsec:composition-video}
+
+\textbf{BF5 : Génération automatique de vidéos}
+\begin{itemize}
+    \item Le système doit composer automatiquement une vidéo à partir d'images du véhicule
+    \item La vidéo doit synchroniser les images avec la narration audio
+    \item Le système doit ajouter des transitions fluides entre les images
+    \item La vidéo finale doit être exportée en format MP4 haute définition (1080p minimum)
+\end{itemize}
+
+\textbf{BF6 : Personnalisation visuelle}
+\begin{itemize}
+    \item Le système doit permettre l'ajout de textes overlay (nom du véhicule, slogan)
+    \item Les effets visuels doivent correspondre au style du véhicule
+    \item Le système doit gérer différents formats d'images en entrée
+\end{itemize}
+
+\subsection{Interface utilisateur}
+\label{subsec:interface-utilisateur}
+
+\textbf{BF7 : Interface web intuitive}
+\begin{itemize}
+    \item L'utilisateur doit pouvoir uploader des images du véhicule
+    \item L'utilisateur doit pouvoir saisir les caractéristiques techniques du véhicule
+    \item Le système doit afficher l'état d'avancement de la génération (script, audio, vidéo)
+    \item L'utilisateur doit pouvoir prévisualiser et télécharger la vidéo générée
+\end{itemize}
+
+\textbf{BF8 : Gestion de multiples générations}
+\begin{itemize}
+    \item L'utilisateur doit pouvoir consulter l'historique des vidéos générées
+    \item Le système doit permettre de régénérer une vidéo avec des paramètres modifiés
+    \item L'utilisateur doit pouvoir supprimer des vidéos de son historique
+\end{itemize}
+
+\section{Besoins non-fonctionnels}
+\label{sec:besoins-non-fonctionnels}
+
+Les besoins non-fonctionnels définissent les contraintes et les critères de qualité du système.
+
+\subsection{Performance}
+\label{subsec:performance}
+
+\textbf{BNF1 : Temps de génération}
+\begin{itemize}
+    \item Le temps total de génération d'une vidéo ne doit pas excéder 5 minutes
+    \item La génération du script doit prendre moins de 30 secondes
+    \item La synthèse vocale doit prendre moins de 20 secondes
+    \item La composition vidéo doit prendre moins de 3 minutes
+\end{itemize}
+
+\textbf{BNF2 : Optimisation des ressources}
+\begin{itemize}
+    \item Le système doit optimiser l'utilisation de la mémoire lors du traitement vidéo
+    \item Les fichiers temporaires doivent être nettoyés après la génération
+\end{itemize}
+
+\subsection{Fiabilité}
+\label{subsec:fiabilite}
+
+\textbf{BNF3 : Gestion des erreurs}
+\begin{itemize}
+    \item Le système doit gérer gracieusement les échecs d'API (Gemini, gTTS)
+    \item Les erreurs doivent être loggées avec des informations détaillées
+    \item L'utilisateur doit recevoir des messages d'erreur clairs et actionnables
+\end{itemize}
+
+\textbf{BNF4 : Qualité des contenus}
+\begin{itemize}
+    \item Les scripts générés doivent être cohérents et sans erreurs grammaticales
+    \item La qualité audio doit être professionnelle sans distorsions
+    \item La qualité vidéo doit être HD (1920x1080 minimum)
+\end{itemize}
+
+\subsection{Maintenabilité}
+\label{subsec:maintenabilite}
+
+\textbf{BNF5 : Architecture modulaire}
+\begin{itemize}
+    \item Le code doit être organisé en modules indépendants (génération, synthèse, composition)
+    \item Chaque module doit avoir une responsabilité unique et bien définie
+    \item Le système doit permettre le remplacement facile d'un composant (ex: changer de LLM)
+\end{itemize}
+
+\textbf{BNF6 : Documentation}
+\begin{itemize}
+    \item Le code doit être commenté et documenté (docstrings Python)
+    \item Un guide d'utilisation doit être fourni pour les utilisateurs
+    \item Une documentation technique doit être disponible pour les développeurs
+\end{itemize}
+
+\subsection{Sécurité}
+\label{subsec:securite}
+
+\textbf{BNF7 : Protection des données}
+\begin{itemize}
+    \item Les clés API doivent être stockées de manière sécurisée (variables d'environnement)
+    \item Les fichiers uploadés doivent être validés (type, taille, contenu)
+    \item Les données utilisateur ne doivent pas être partagées avec des tiers
+\end{itemize}
+
+\subsection{Scalabilité}
+\label{subsec:scalabilite}
+
+\textbf{BNF8 : Évolutivité}
+\begin{itemize}
+    \item L'architecture doit permettre l'ajout de nouveaux styles de véhicules
+    \item Le système doit supporter l'ajout de nouvelles langues pour la synthèse vocale
+    \item Le système doit être prêt pour une migration vers le cloud si nécessaire
+\end{itemize}
+
+\subsection{Utilisabilité}
+\label{subsec:utilisabilite}
+
+\textbf{BNF9 : Expérience utilisateur}
+\begin{itemize}
+    \item L'interface doit être intuitive et ne nécessiter aucune formation
+    \item Le système doit fournir des feedbacks visuels clairs sur l'état du traitement
+    \item L'interface doit être responsive et accessible sur différents appareils
+\end{itemize}
+
+\section{Contraintes techniques}
+\label{sec:contraintes-techniques}
+
+\subsection{Contraintes technologiques}
+\begin{itemize}
+    \item \textbf{Backend :} Python 3.10+, FastAPI
+    \item \textbf{Frontend :} React 18+, TypeScript 5+
+    \item \textbf{LLM :} Google Gemini 2.5 Flash
+    \item \textbf{TTS :} gTTS (Google Text-to-Speech)
+    \item \textbf{Composition vidéo :} MoviePy, Pillow
+    \item \textbf{Format vidéo :} MP4 (H.264)
+\end{itemize}
+
+\subsection{Contraintes d'environnement}
+\begin{itemize}
+    \item Le système doit fonctionner sur Linux et Windows
+    \item Les dépendances doivent être gérées via pip/conda
+    \item Le système doit supporter Python 3.10 minimum
+\end{itemize}
+
+\section{Spécifications techniques}
+\label{sec:specifications-techniques}
+
+\subsection{Architecture système}
+\begin{itemize}
+    \item \textbf{Backend API REST} avec FastAPI pour la communication frontend-backend
+    \item \textbf{Module de génération} utilisant Google Gemini API
+    \item \textbf{Module de synthèse vocale} utilisant gTTS
+    \item \textbf{Module de composition vidéo} utilisant MoviePy
+    \item \textbf{Module de classification} pour détecter le style de véhicule
+    \item \textbf{Frontend React} avec interface utilisateur moderne
+\end{itemize}
+
+\subsection{Format des données}
+\begin{itemize}
+    \item \textbf{Images :} JPEG, PNG (max 10MB par image)
+    \item \textbf{Audio :} MP3, 128 kbps minimum
+    \item \textbf{Vidéo :} MP4 (H.264), 1920x1080, 30 fps
+    \item \textbf{API :} JSON pour les échanges de données
+\end{itemize}
+
+\section{Conclusion}
+
+Ce chapitre a permis d'identifier et de formaliser l'ensemble des besoins fonctionnels et non-fonctionnels du système AutoStory. Ces spécifications constituent la base pour la phase de conception et de développement. Le chapitre suivant présentera l'architecture technique et la modélisation de la solution.

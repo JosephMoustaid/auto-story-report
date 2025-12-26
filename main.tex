@@ -6,7 +6,6 @@
 \usepackage[french]{babel}
 \usepackage{csquotes} % recommandé avec biblatex
 \usepackage{graphicx}
-\usepackage{geometry}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
 \usepackage{setspace}
@@ -30,16 +29,6 @@
 \makeglossaries
 
 % ===== Marges =====
-\geometry{
-    a4paper,
-    left=2.5cm,
-    right=2.5cm,
-    top=2.5cm,
-    bottom=2.5cm,
-    headheight=14pt, % adapté à fancyhdr
-    headsep=0.6cm,
-    footskip=1.2cm
-}
 \usepackage[a4paper,
             left=3cm,
             right=2.5cm,
@@ -117,12 +106,12 @@
 \author{
   Youssef MOUSTAID \\[0.2em]
   Fayz OUSSAMA \\[0.5em]
-  \small Filière : Ingénierie Logicielle et Intelligence Artificielle \\
+  \small Filière : Méthodes Informatiques Appliquées à la Gestion des Entreprises - MIAGE  \\
   \small 9ème Semestre \\[0.5em]
-  \small Encadré par : Nom de l'Encadrant \\
+  \small Encadré par : M. RAOUYANE  \\
   \small Année Universitaire 2025-2026
 }
-\date{Juin 2026}
+\date{30 décembre 2025}
 
 % ===== Document =====
 \begin{document}
@@ -135,7 +124,7 @@
     \vspace{0.8cm}
     {\scshape\Large EMSI \par}
     \vspace{0.5cm}
-    {\scshape\large Filière : Ingénierie Logicielle et Intelligence Artificielle\par}
+    {\scshape\large Filière : Méthodes Informatiques Appliquées à la Gestion des Entreprises - MIAGE\par}
     {\scshape\large 9ème Semestre\par}
     \vspace{1.5cm}
     {\huge\bfseries Rapport de Projet de Fin d'Année\par}
@@ -155,10 +144,10 @@
     \par}
     \vfill
     Encadré par\par
-    Prénom NOM \textsc{de l'Encadrant}
+    M. RAOUYANE
     \vfill
     {\large Année Universitaire 2025-2026\par}
-    {\large Juin 2026\par}
+    {\large Dfécembre 2026\par}
 \end{titlepage}
 
 % Page de validation
@@ -210,10 +199,10 @@ Nous tenons à exprimer notre profonde gratitude à toutes les personnes qui ont
 Tout d'abord, nous remercions l'\textbf{École Marocaine des Sciences de l'Ingénieur (EMSI)} pour la formation de qualité dont nous avons bénéficié et pour nous avoir offert l'opportunité de travailler sur un projet innovant dans le domaine de l'intelligence artificielle appliquée au marketing automobile.
 \vspace{1em}
 
-Nous souhaitons également remercier \textbf{notre encadrant académique} pour son suivi rigoureux, ses conseils avisés et ses recommandations constructives, qui nous ont permis d'améliorer la qualité de ce travail et de mener à bien ce projet.  
+Nous souhaitons également remercier notre encadrant académique  \textbf{M. Raouyane}  pour son suivi rigoureux, ses conseils avisés et ses recommandations constructives, qui nous ont permis d'améliorer la qualité de ce travail et de mener à bien ce projet.  
 \vspace{1em}
 
-Nos remerciements vont également à tous les enseignants de la filière \textbf{Ingénierie Logicielle et Intelligence Artificielle} qui nous ont transmis les connaissances théoriques et pratiques nécessaires à la réalisation de ce projet.
+Nos remerciements vont également à tous les enseignants de la filière \textbf{MIAGE} qui nous ont transmis les connaissances théoriques et pratiques nécessaires à la réalisation de ce projet.
 \vspace{1em}
 
 Enfin, nous adressons un grand merci à nos familles et nos amis pour leur soutien moral et leur encouragement constant durant cette période exigeante.
@@ -221,7 +210,7 @@ Enfin, nous adressons un grand merci à nos familles et nos amis pour leur souti
 % Résumé
 \chapter*{Résumé}
 \addcontentsline{toc}{chapter}{Résumé}
-Ce rapport présente le \textbf{Projet de Fin d'Année (PFA)} intitulé \textit{AutoStory}, réalisé à l'\textbf{École Marocaine des Sciences de l'Ingénieur (EMSI)} dans le cadre de la filière \textbf{Ingénierie Logicielle et Intelligence Artificielle}. L'objectif principal de ce projet est le développement d'un \textbf{système automatisé de génération de vidéos publicitaires} pour le secteur automobile, exploitant les capacités des \textbf{Large Language Models (LLMs)} et des technologies de synthèse vocale.
+Ce rapport présente le \textbf{Projet de Fin d'Année (PFA)} intitulé \textit{AutoStory}, réalisé à l'\textbf{École Marocaine des Sciences de l'Ingénieur (EMSI)} dans le cadre de la filière \textbf{MIAGE}. L'objectif principal de ce projet est le développement d'un \textbf{système automatisé de génération de vidéos publicitaires} pour le secteur automobile, exploitant les capacités des \textbf{Large Language Models (LLMs)} et des technologies de synthèse vocale.
 \vspace{1em}
 
 La solution développée se compose d'un \textbf{backend Python} utilisant \textbf{Google Gemini AI 2.5 Flash} pour la génération de scripts narratifs techniques, \textbf{gTTS} pour la synthèse vocale française, et \textbf{MoviePy} pour la composition vidéo automatisée. Un \textbf{frontend React/TypeScript} est en cours de développement pour offrir une interface utilisateur moderne et intuitive. Le système permet de générer des vidéos publicitaires personnalisées en environ 3 minutes, adaptées au style du véhicule (sportif, luxe, familial, écologique).

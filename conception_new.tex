@@ -1,0 +1,434 @@
+\chapter{Conception et Architecture}
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+
+Dans ce chapitre, nous présentons la conception technique et l'architecture du système AutoStory. Cette phase cruciale permet de traduire les besoins fonctionnels identifiés en une solution technique concrète et réalisable. Nous détaillerons l'architecture globale du système, les choix technologiques, ainsi que la modélisation des principaux composants et de leurs interactions.
+
+L'objectif est de concevoir une architecture modulaire, scalable et maintenable, facilitant l'évolution future du système et l'intégration de nouvelles fonctionnalités.
+
+\section{Architecture globale du système}
+\label{sec:architecture-globale}
+
+\subsection{Vue d'ensemble}
+\label{subsec:vue-ensemble}
+
+AutoStory adopte une \textbf{architecture modulaire} composée de plusieurs modules indépendants qui collaborent pour produire des vidéos publicitaires automatisées. Le système se décompose en quatre modules principaux :
+
+\begin{itemize}
+    \item \textbf{Module de Classification} : Analyse les caractéristiques du véhicule et détermine son style
+    \item \textbf{Module de Génération} : Crée le script narratif via Google Gemini
+    \item \textbf{Module de Synthèse Vocale} : Convertit le script en audio avec gTTS
+    \item \textbf{Module de Composition Vidéo} : Assemble images et audio en vidéo finale
+\end{itemize}
+
+\subsection{Architecture technique}
+\label{subsec:architecture-technique}
+
+Le système repose sur une architecture \textbf{Backend-Frontend} :
+
+\begin{itemize}
+    \item \textbf{Backend Python} : API REST construite avec FastAPI, gérant la logique métier
+    \item \textbf{Frontend React} : Interface utilisateur moderne développée en TypeScript
+    \item \textbf{Services externes} : Google Gemini API, gTTS
+    \item \textbf{Stockage} : Fichiers locaux pour images, audio et vidéos générées
+\end{itemize}
+
+\subsection{Flux de traitement}
+\label{subsec:flux-traitement}
+
+Le processus de génération suit un pipeline séquentiel :
+
+\begin{enumerate}
+    \item L'utilisateur upload des images et spécifie les caractéristiques du véhicule
+    \item Le module de classification analyse le véhicule et détermine son style
+    \item Le module de génération crée un script adapté au style détecté
+    \item Le module de synthèse vocale convertit le script en fichier audio
+    \item Le module de composition assemble images et audio en vidéo MP4
+    \item La vidéo finale est disponible pour téléchargement
+\end{enumerate}
+
+\section{Conception des modules}
+\label{sec:conception-modules}
+
+\subsection{Module de Classification}
+\label{subsec:module-classification}
+
+\subsubsection{Responsabilités}
+
+Le module de classification analyse les caractéristiques techniques et visuelles d'un véhicule pour déterminer son style dominant :
+
+\begin{itemize}
+    \item \textbf{Sportif} : Performance, vitesse, dynamisme
+    \item \textbf{Luxe} : Confort, prestige, technologie
+    \item \textbf{Familial} : Espace, sécurité, praticité
+    \item \textbf{Écologique} : Efficacité énergétique, environnement
+\end{itemize}
+
+\subsubsection{Algorithme de classification}
+
+La classification s'appuie sur une analyse multi-critères :
+
+\begin{itemize}
+    \item Puissance moteur (chevaux)
+    \item Type de carburant (essence, diesel, électrique, hybride)
+    \item Nombre de places
+    \item Consommation
+    \item Équipements (GPS, sièges cuir, systèmes de sécurité)
+\end{itemize}
+
+\subsubsection{Sortie}
+
+Le module retourne :
+\begin{itemize}
+    \item Catégorie principale du véhicule
+    \item Score de confiance (0-1)
+    \item Caractéristiques clés à mettre en avant
+\end{itemize}
+
+\subsection{Module de Génération de Scripts}
+\label{subsec:module-generation}
+
+\subsubsection{Responsabilités}
+
+Ce module utilise Google Gemini 2.5 Flash pour générer des scripts narratifs publicitaires techniques et engageants.
+
+\subsubsection{Structure du prompt}
+
+Le prompt envoyé à Gemini est construit dynamiquement :
+
+\begin{verbatim}
+Tu es un rédacteur publicitaire expert en automobile.
+Génère un script de 30-45 secondes pour une vidéo 
+publicitaire du véhicule suivant :
+
+Marque: {marque}
+Modèle: {modèle}
+Style: {style}
+Caractéristiques clés: {caracteristiques}
+
+Le script doit :
+- Être technique mais accessible
+- Mettre en avant les innovations
+- Adapter le ton au style ({sportif/luxe/familial/eco})
+- Durer 30-45 secondes à la lecture
+\end{verbatim}
+
+\subsubsection{Post-traitement}
+
+Le script généré est :
+\begin{itemize}
+    \item Vérifié pour sa longueur (max 200 mots)
+    \item Nettoyé des éventuels artefacts
+    \item Validé syntaxiquement
+\end{itemize}
+
+\subsection{Module de Synthèse Vocale}
+\label{subsec:module-synthese}
+
+\subsubsection{Responsabilités}
+
+Conversion du script textuel en fichier audio avec une voix naturelle française.
+
+\subsubsection{Paramètres de synthèse}
+
+\begin{itemize}
+    \item \textbf{Langue} : Français (fr)
+    \item \textbf{Vitesse} : Normale (1.0x)
+    \item \textbf{Format} : MP3
+    \item \textbf{Qualité} : 128 kbps minimum
+\end{itemize}
+
+\subsubsection{Gestion des erreurs}
+
+Le module gère :
+\begin{itemize}
+    \item Échec de connexion à gTTS (retry avec backoff)
+    \item Timeouts réseau
+    \item Validation du fichier audio généré
+\end{itemize}
+
+\subsection{Module de Composition Vidéo}
+\label{subsec:module-composition}
+
+\subsubsection{Responsabilités}
+
+Assemblage des images du véhicule avec la narration audio pour produire la vidéo finale.
+
+\subsubsection{Pipeline de composition}
+
+\begin{enumerate}
+    \item \textbf{Préparation des images}
+    \begin{itemize}
+        \item Redimensionnement à 1920x1080
+        \item Normalisation du format
+        \item Application de transitions
+    \end{itemize}
+    
+    \item \textbf{Calcul de la durée}
+    \begin{itemize}
+        \item Durée audio déterminée
+        \item Durée par image calculée (durée\_audio / nb\_images)
+        \item Ajustement pour synchronisation
+    \end{itemize}
+    
+    \item \textbf{Création des clips}
+    \begin{itemize}
+        \item Chaque image devient un clip ImageClip
+        \item Application de transitions (fadeIn/fadeOut)
+        \item Positionnement temporel
+    \end{itemize}
+    
+    \item \textbf{Assemblage final}
+    \begin{itemize}
+        \item Concaténation des clips images
+        \item Ajout de la piste audio
+        \item Export en MP4 (codec H.264, 30 fps)
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Paramètres d'export}
+
+\begin{itemize}
+    \item \textbf{Résolution} : 1920x1080 (Full HD)
+    \item \textbf{Codec vidéo} : H.264
+    \item \textbf{Codec audio} : AAC
+    \item \textbf{Framerate} : 30 fps
+    \item \textbf{Bitrate} : Automatique (qualité élevée)
+\end{itemize}
+
+\section{Architecture Backend}
+\label{sec:architecture-backend}
+
+\subsection{Structure du projet Python}
+\label{subsec:structure-projet}
+
+Le backend est organisé de manière modulaire :
+
+\begin{verbatim}
+backend/
+├── app/
+│   ├── main.py              # Point d'entrée FastAPI
+│   ├── api/
+│   │   └── routes/          # Endpoints REST
+│   ├── core/
+│   │   ├── config.py        # Configuration
+│   │   └── security.py      # Sécurité
+│   ├── models/
+│   │   ├── vehicle.py       # Modèles de données
+│   │   └── video.py
+│   ├── services/
+│   │   ├── classifier.py    # Module classification
+│   │   ├── generator.py     # Module génération
+│   │   ├── tts.py           # Module synthèse vocale
+│   │   └── video_composer.py # Module composition
+│   └── utils/
+│       └── helpers.py       # Utilitaires
+├── storage/
+│   ├── uploads/             # Images uploadées
+│   ├── audio/               # Fichiers audio
+│   └── videos/              # Vidéos générées
+└── requirements.txt
+\end{verbatim}
+
+\subsection{API REST}
+\label{subsec:api-rest}
+
+\subsubsection{Endpoints principaux}
+
+\textbf{POST /api/generate}
+\begin{itemize}
+    \item \textbf{Description} : Lance la génération complète d'une vidéo
+    \item \textbf{Input} : Images + caractéristiques véhicule (JSON)
+    \item \textbf{Output} : ID de génération + statut
+\end{itemize}
+
+\textbf{GET /api/status/\{id\}}
+\begin{itemize}
+    \item \textbf{Description} : Vérifie l'état d'une génération en cours
+    \item \textbf{Output} : Statut (pending/processing/completed/error) + progression
+\end{itemize}
+
+\textbf{GET /api/download/\{id\}}
+\begin{itemize}
+    \item \textbf{Description} : Télécharge la vidéo générée
+    \item \textbf{Output} : Fichier MP4
+\end{itemize}
+
+\textbf{GET /api/history}
+\begin{itemize}
+    \item \textbf{Description} : Liste des générations précédentes
+    \item \textbf{Output} : Liste des vidéos avec métadonnées
+\end{itemize}
+
+\subsubsection{Format des requêtes}
+
+Exemple de requête POST /api/generate :
+
+\begin{verbatim}
+{
+  "vehicle": {
+    "brand": "Tesla",
+    "model": "Model S",
+    "year": 2024,
+    "power": 670,
+    "fuel_type": "electric",
+    "seats": 5,
+    "features": ["Autopilot", "Plaid", "Long Range"]
+  },
+  "images": ["base64_image1", "base64_image2", ...]
+}
+\end{verbatim}
+
+\section{Architecture Frontend}
+\label{sec:architecture-frontend}
+
+\subsection{Structure du projet React}
+\label{subsec:structure-react}
+
+\begin{verbatim}
+frontend/
+├── src/
+│   ├── components/
+│   │   ├── VehicleForm/     # Formulaire saisie
+│   │   ├── ImageUploader/   # Upload d'images
+│   │   ├── ProgressBar/     # Barre de progression
+│   │   └── VideoPlayer/     # Lecteur vidéo
+│   ├── pages/
+│   │   ├── Home.tsx
+│   │   ├── Generate.tsx
+│   │   └── History.tsx
+│   ├── services/
+│   │   └── api.ts           # Client API
+│   ├── types/
+│   │   └── vehicle.ts       # Types TypeScript
+│   └── App.tsx
+└── package.json
+\end{verbatim}
+
+\subsection{Gestion de l'état}
+\label{subsec:gestion-etat}
+
+Le frontend utilise :
+\begin{itemize}
+    \item \textbf{React Hooks} (useState, useEffect) pour l'état local
+    \item \textbf{Context API} pour l'état global
+    \item \textbf{React Query} pour le cache des requêtes API
+\end{itemize}
+
+\subsection{Interface utilisateur}
+\label{subsec:interface-utilisateur}
+
+L'interface comprend trois pages principales :
+
+\begin{enumerate}
+    \item \textbf{Page d'accueil} : Présentation du projet
+    \item \textbf{Page de génération} :
+    \begin{itemize}
+        \item Formulaire de saisie des caractéristiques
+        \item Zone d'upload d'images (drag \& drop)
+        \item Bouton de génération
+        \item Barre de progression avec étapes
+    \end{itemize}
+    \item \textbf{Page historique} :
+    \begin{itemize}
+        \item Liste des vidéos générées
+        \item Prévisualisation et téléchargement
+        \item Métadonnées (date, véhicule, durée)
+    \end{itemize}
+\end{enumerate}
+
+\section{Choix technologiques}
+\label{sec:choix-technologiques}
+
+\subsection{Backend}
+\label{subsec:choix-backend}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\caption{Technologies Backend}
+\label{tab:tech_backend}
+\begin{tabular}{|l|l|p{0.5\textwidth}|}
+\hline
+\rowcolor{blue!25} \textbf{Technologie} & \textbf{Version} & \textbf{Justification} \\
+\hline
+Python & 3.10+ & Écosystème riche en IA/ML, syntaxe claire \\
+\hline
+FastAPI & 0.100+ & Performance, async, documentation auto \\
+\hline
+MoviePy & 1.0+ & Manipulation vidéo intuitive \\
+\hline
+gTTS & 2.5+ & Synthèse vocale gratuite et fiable \\
+\hline
+Pillow & 10.0+ & Traitement d'images \\
+\hline
+Google Gemini & 2.5 Flash & LLM puissant, rapide et accessible \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Frontend}
+\label{subsec:choix-frontend}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\caption{Technologies Frontend}
+\label{tab:tech_frontend}
+\begin{tabular}{|l|l|p{0.5\textwidth}|}
+\hline
+\rowcolor{blue!25} \textbf{Technologie} & \textbf{Version} & \textbf{Justification} \\
+\hline
+React & 18+ & Bibliothèque UI moderne et performante \\
+\hline
+TypeScript & 5+ & Typage statique, sécurité du code \\
+\hline
+Vite & 5+ & Build tool rapide \\
+\hline
+TailwindCSS & 3+ & Framework CSS utilitaire \\
+\hline
+Axios & 1.6+ & Client HTTP simple et robuste \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Sécurité et bonnes pratiques}
+\label{sec:securite}
+
+\subsection{Sécurité}
+\label{subsec:securite-system}
+
+\begin{itemize}
+    \item \textbf{Gestion des secrets} : Variables d'environnement (.env) pour clés API
+    \item \textbf{Validation des inputs} : Vérification type/taille des fichiers uploadés
+    \item \textbf{Rate limiting} : Limitation du nombre de requêtes par utilisateur
+    \item \textbf{Sanitization} : Nettoyage des données utilisateur avant traitement
+\end{itemize}
+
+\subsection{Gestion des erreurs}
+\label{subsec:gestion-erreurs}
+
+\begin{itemize}
+    \item Logging structuré (Python logging)
+    \item Messages d'erreur explicites pour l'utilisateur
+    \item Retry automatique pour les appels API externes
+    \item Nettoyage des fichiers temporaires en cas d'échec
+\end{itemize}
+
+\subsection{Performance}
+\label{subsec:performance-system}
+
+\begin{itemize}
+    \item Traitement asynchrone des requêtes (FastAPI async)
+    \item Optimisation des images avant traitement
+    \item Cache des résultats de classification
+    \item Compression des vidéos générées
+\end{itemize}
+
+\section*{Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
+
+Ce chapitre a présenté la conception technique complète du système AutoStory. L'architecture modulaire adoptée garantit la séparation des responsabilités, facilitant la maintenance et l'évolution du système. Les choix technologiques effectués répondent aux exigences de performance, fiabilité et scalabilité identifiées lors de l'analyse des besoins.
+
+La conception détaillée des modules (classification, génération, synthèse vocale, composition vidéo) et de leurs interactions fournit une base solide pour la phase d'implémentation. Le chapitre suivant présentera la réalisation concrète de cette architecture et les défis techniques rencontrés lors du développement.
