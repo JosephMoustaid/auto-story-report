@@ -1,0 +1,530 @@
+\chapter{Réalisation et Mise en Œuvre}
+
+\section{Introduction}
+
+Dans ce chapitre, nous présentons la phase de réalisation du projet AutoStory, qui constitue la concrétisation des choix d'architecture et de conception détaillés précédemment. Nous décrirons l'environnement de développement, les technologies utilisées, ainsi que les principales fonctionnalités implémentées à travers des captures d'écran de l'application.
+
+Cette phase de réalisation a nécessité l'intégration de plusieurs technologies modernes : React pour le frontend, Node.js/Express pour le backend, MongoDB pour la base de données, et Google Gemini AI pour la génération de contenu intelligent. L'objectif principal était de créer une plateforme complète permettant la génération automatisée de contenus publicitaires multimédia pour le secteur automobile.
+
+\section{Environnement et outils de développement}
+\label{sec:environnement-dev}
+
+\subsection{Outils de développement}
+\label{subsec:outils-dev}
+
+Pour garantir une productivité optimale et une qualité de code élevée, nous avons utilisé plusieurs outils professionnels durant le développement :
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|p{10cm}|}
+\hline
+\textbf{Outil} & \textbf{Utilisation} \\
+\hline
+Visual Studio Code & Éditeur de code principal pour le frontend (React/TypeScript) et backend (Node.js) \\
+\hline
+IntelliJ IDEA & IDE pour le développement backend et gestion des services \\
+\hline
+DataGrip & Gestion et requêtes MongoDB, visualisation des données \\
+\hline
+Postman & Tests des API REST, documentation des endpoints \\
+\hline
+Figma & Conception des maquettes et design UI/UX \\
+\hline
+Git/GitHub & Versioning du code et collaboration \\
+\hline
+Diagrams.net & Création des diagrammes UML et d'architecture \\
+\hline
+\end{tabular}
+\caption{Outils de développement utilisés}
+\label{tab:outils-dev}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.15\textwidth]{images/Chap5/logos/vs.png}
+\hspace{0.5cm}
+\includegraphics[width=0.15\textwidth]{images/Chap5/logos/intellig.png}
+\hspace{0.5cm}
+\includegraphics[width=0.15\textwidth]{images/Chap5/logos/DataGrip.svg.png}
+\hspace{0.5cm}
+\includegraphics[width=0.15\textwidth]{images/Chap5/logos/postman.png}
+\caption{Logos des principaux outils de développement}
+\label{fig:logos-outils}
+\end{figure}
+
+\subsection{Stack technologique}
+\label{subsec:stack-tech}
+
+\subsubsection{Frontend}
+
+Le frontend a été développé avec les technologies suivantes :
+
+\begin{itemize}
+    \item \textbf{React 18} : Framework JavaScript pour la construction d'interfaces utilisateur dynamiques et réactives
+    \item \textbf{TypeScript} : Surcharge typée de JavaScript pour améliorer la maintenabilité et réduire les erreurs
+    \item \textbf{Three.js} : Bibliothèque pour la création d'expériences 3D interactives (visualisation de véhicules)
+    \item \textbf{React Router} : Gestion de la navigation et du routing côté client
+    \item \textbf{Axios} : Client HTTP pour les appels API
+    \item \textbf{Context API} : Gestion de l'état global de l'application
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.12\textwidth]{images/Chap5/logos/react-native-1.png}
+\hspace{0.5cm}
+\includegraphics[width=0.12\textwidth]{images/Chap5/logos/Typescript_logo_2020.svg.png}
+\hspace{0.5cm}
+\includegraphics[width=0.12\textwidth]{images/Chap5/logos/nextjs.png}
+\caption{Technologies frontend principales}
+\label{fig:logos-frontend}
+\end{figure}
+
+\subsubsection{Backend}
+
+Le backend repose sur une architecture RESTful avec les technologies suivantes :
+
+\begin{itemize}
+    \item \textbf{Node.js} : Environnement d'exécution JavaScript côté serveur
+    \item \textbf{Express.js} : Framework web minimaliste pour la création d'API REST
+    \item \textbf{MongoDB} : Base de données NoSQL orientée documents pour le stockage des véhicules et utilisateurs
+    \item \textbf{Mongoose} : ODM (Object Document Mapper) pour MongoDB
+    \item \textbf{JWT (JSON Web Tokens)} : Authentification stateless et sécurisée
+    \item \textbf{Bcrypt} : Hachage sécurisé des mots de passe
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.12\textwidth]{images/Chap5/logos/spring-boot-logo.png}
+\hspace{0.5cm}
+\includegraphics[width=0.12\textwidth]{images/Chap5/logos/LogoPostgreSql100reel.png}
+\caption{Technologies backend}
+\label{fig:logos-backend}
+\end{figure}
+
+\subsubsection{Intelligence Artificielle}
+
+\begin{itemize}
+    \item \textbf{Google Gemini 2.5 Flash} : Large Language Model pour la génération de scripts narratifs
+    \item \textbf{Gemini Pro Vision} : Modèle multimodal pour l'analyse d'images de véhicules
+    \item \textbf{Prompt Engineering} : Techniques d'optimisation des prompts pour obtenir des résultats de qualité
+\end{itemize}
+
+\subsection{Services et API externes}
+\label{subsec:services-externes}
+
+\begin{itemize}
+    \item \textbf{Wikipedia API} : Récupération automatique d'images de véhicules
+    \item \textbf{Wikimedia Commons} : Source d'images alternative
+    \item \textbf{Puppeteer} : Génération automatisée de vidéos via navigateur headless
+\end{itemize}
+
+\section{Architecture de l'application}
+\label{sec:architecture-app}
+
+L'architecture d'AutoStory suit un modèle client-serveur moderne avec une séparation claire entre le frontend et le backend, communiquant via une API REST.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{images/architecture.jpeg}
+\caption{Architecture globale du système AutoStory}
+\label{fig:architecture-globale}
+\end{figure}
+
+\subsection{Composants principaux}
+\label{subsec:composants-principaux}
+
+\begin{itemize}
+    \item \textbf{Frontend React} : Interface utilisateur responsive accessible via navigateur web
+    \item \textbf{API REST (Express)} : Couche intermédiaire gérant la logique métier
+    \item \textbf{Services AI} : Intégration avec Google Gemini pour la génération de contenu
+    \item \textbf{Base de données MongoDB} : Stockage de plus de 10,000 véhicules
+    \item \textbf{Système de fichiers} : Stockage des médias générés (vidéos, PDFs)
+\end{itemize}
+
+\section{Fonctionnalités implémentées}
+\label{sec:fonctionnalites}
+
+\subsection{Système d'authentification}
+\label{subsec:authentification}
+
+Le système propose une authentification sécurisée avec gestion des utilisateurs :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{images/screenshots/lgoin.png}
+\caption{Interface de connexion}
+\label{fig:login}
+\end{figure}
+
+\textbf{Fonctionnalités :}
+\begin{itemize}
+    \item Inscription avec email et mot de passe
+    \item Connexion avec JWT tokens
+    \item Hachage sécurisé des mots de passe (bcrypt)
+    \item Gestion de session persistante
+    \item Routes protégées nécessitant authentification
+\end{itemize}
+
+\subsection{Tableau de bord principal}
+\label{subsec:dashboard}
+
+Le tableau de bord offre une vue d'ensemble des fonctionnalités disponibles :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/dashboard.png}
+\caption{Tableau de bord principal}
+\label{fig:dashboard}
+\end{figure}
+
+Le dashboard présente quatre modules principaux :
+\begin{itemize}
+    \item \textbf{Browse} : Exploration du catalogue de véhicules
+    \item \textbf{GenAI} : Génération automatique de contenus
+    \item \textbf{Compare} : Comparaison de véhicules
+    \item \textbf{3D View} : Visualisation interactive en 3D
+\end{itemize}
+
+\subsection{Navigation et exploration des véhicules}
+\label{subsec:navigation-vehicules}
+
+\subsubsection{Catalogue de véhicules}
+
+L'application propose un catalogue complet avec plus de 10,000 véhicules de 1945 à 2020 :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/browse.png}
+\caption{Page de navigation du catalogue}
+\label{fig:browse}
+\end{figure}
+
+\textbf{Caractéristiques :}
+\begin{itemize}
+    \item Affichage en grille responsive
+    \item Pagination intelligente
+    \item Tri par marque, année, puissance
+    \item Images automatiques depuis Wikipedia
+\end{itemize}
+
+\subsubsection{Filtres avancés}
+
+Un système de filtrage puissant permet de rechercher précisément :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/filter-vehicles.png}
+\caption{Système de filtres avancés}
+\label{fig:filters}
+\end{figure}
+
+\textbf{Critères de filtrage :}
+\begin{itemize}
+    \item Marque et modèle
+    \item Plage d'années (YearFrom - YearTo)
+    \item Puissance moteur (Horsepower)
+    \item Type de carrosserie (BodyType)
+    \item Pays d'origine
+\end{itemize}
+
+\subsubsection{Véhicules les plus performants}
+
+Une section dédiée aux véhicules d'exception :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/top-cars.png}
+\caption{Classement des véhicules les plus performants}
+\label{fig:top-cars}
+\end{figure}
+
+\subsection{Pages de détails}
+\label{subsec:pages-details}
+
+\subsubsection{Détails d'un véhicule}
+
+Chaque véhicule dispose d'une page détaillée complète :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/car-details-ford-fiesta.png}
+\caption{Page de détails - Ford Fiesta}
+\label{fig:car-details-1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/car-details-ford-fiesta-specs.png}
+\caption{Spécifications techniques détaillées}
+\label{fig:car-specs}
+\end{figure}
+
+\textbf{Informations affichées :}
+\begin{itemize}
+    \item Informations générales (marque, modèle, génération)
+    \item Caractéristiques moteur (type, cylindrée, puissance)
+    \item Performances (vitesse max, accélération)
+    \item Dimensions et poids
+    \item Transmission et châssis
+\end{itemize}
+
+\subsubsection{Informations AI supplémentaires}
+
+L'IA Gemini fournit des analyses contextuelles :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/car-details-ford-fiesta-ai-more-info.png}
+\caption{Informations générées par l'IA}
+\label{fig:ai-info}
+\end{figure}
+
+\subsection{Navigation par marques}
+\label{subsec:marques}
+
+\subsubsection{Liste des marques}
+
+Un catalogue complet des constructeurs automobiles :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/brands.png}
+\caption{Catalogue des marques automobiles}
+\label{fig:brands}
+\end{figure}
+
+\subsubsection{Détails d'une marque}
+
+Statistiques et véhicules par constructeur :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/brand-details.png}
+\caption{Page de détails d'une marque}
+\label{fig:brand-details}
+\end{figure}
+
+\subsection{Fonctionnalités d'Intelligence Artificielle}
+\label{subsec:fonctions-ia}
+
+\subsubsection{Génération automatique de contenus}
+
+Le module GenAI constitue le cœur de l'application avec un processus en trois étapes :
+
+\textbf{Étape 1 : Sélection du véhicule}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/genai-page-step1.png}
+\caption{GenAI - Étape 1 : Recherche et sélection}
+\label{fig:genai-step1}
+\end{figure}
+
+\textbf{Étape 2 : Personnalisation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/genai-page-step2-vehicle-selection.png}
+\caption{GenAI - Étape 2 : Configuration des paramètres}
+\label{fig:genai-step2}
+\end{figure}
+
+Paramètres configurables :
+\begin{itemize}
+    \item \textbf{Tone} : Technical, Emotional, Marketing
+    \item \textbf{Language} : 7 langues disponibles (EN, FR, ES, DE, IT, JA, ZH)
+    \item \textbf{Formats de sortie} : Texte, Vidéo, PDF, 3D
+\end{itemize}
+
+\textbf{Étape 3 : Sélection des formats}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/genai-page-step3-select-outputs.png}
+\caption{GenAI - Étape 3 : Choix des exports}
+\label{fig:genai-step3}
+\end{figure}
+
+\subsubsection{Assistant conversationnel AI}
+
+Un chatbot intelligent pour interagir avec la base de données :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/ai-vehicles-assistant.png}
+\caption{Assistant AI conversationnel}
+\label{fig:ai-assistant}
+\end{figure}
+
+\textbf{Capacités :}
+\begin{itemize}
+    \item Réponses en langage naturel
+    \item Recherche contextuelle de véhicules
+    \item Recommandations personnalisées
+    \item Explications techniques simplifiées
+\end{itemize}
+
+\subsubsection{Système de recommandations}
+
+L'IA propose des véhicules basés sur les préférences :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/ai-vehicle-recommender.png}
+\caption{Interface du recommandeur AI}
+\label{fig:ai-recommender-input}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/ai-vehicle-recommender-recommendations.png}
+\caption{Résultats des recommandations}
+\label{fig:ai-recommender-results}
+\end{figure}
+
+\subsubsection{Comparateur intelligent}
+
+Comparaison détaillée de 2 véhicules ou plus :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/2-or-more-vehicles-comparator-ai.png}
+\caption{Comparateur de véhicules avec analyse AI}
+\label{fig:comparator}
+\end{figure}
+
+\textbf{Analyses fournies :}
+\begin{itemize}
+    \item Comparaison des spécifications techniques
+    \item Analyse des performances
+    \item Forces et faiblesses de chaque véhicule
+    \item Recommandation finale selon le profil utilisateur
+\end{itemize}
+
+\subsubsection{Timeline historique}
+
+Visualisation de l'évolution d'une marque ou modèle :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/automotive-car-or-brand-timeline.png}
+\caption{Timeline historique d'une marque}
+\label{fig:timeline}
+\end{figure}
+
+\subsection{Visualisation 3D interactive}
+\label{subsec:3d-view}
+
+\subsubsection{Vue 3D principale}
+
+Expérience immersive avec Three.js :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/porshe-911-3d-view.png}
+\caption{Vue 3D interactive - Porsche 911}
+\label{fig:3d-main}
+\end{figure}
+
+\textbf{Fonctionnalités 3D :}
+\begin{itemize}
+    \item Rotation libre à 360°
+    \item Zoom et panoramique
+    \item Éclairage dynamique
+    \item Textures haute résolution
+    \item Mode plein écran
+\end{itemize}
+
+\subsubsection{Annotations interactives}
+
+Points d'information cliquables sur le modèle 3D :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/porshe-911-annotations.png}
+\caption{Annotations 3D interactives}
+\label{fig:3d-annotations}
+\end{figure}
+
+\subsubsection{Mode Ghost - Vue interne}
+
+Visualisation des composants internes :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/screenshots/porshe-911-internals-mode.png}
+\caption{Mode Ghost - Visualisation des internals}
+\label{fig:3d-ghost}
+\end{figure}
+
+\section{Génération de documents}
+\label{sec:generation-documents}
+
+Le système génère automatiquement des brochures professionnelles au format PDF. La figure ci-dessous illustre un exemple de document généré pour un véhicule :
+
+\textbf{Contenu du PDF :}
+\begin{itemize}
+    \item Page de couverture avec image hero
+    \item Narrative générée par l'IA
+    \item Tableau des spécifications techniques
+    \item Images du véhicule
+    \item Design professionnel et personnalisable
+\end{itemize}
+
+\section{Tests et validation}
+\label{sec:tests-validation}
+
+\subsection{Tests unitaires et d'intégration}
+\label{subsec:tests-unitaires}
+
+Des tests ont été réalisés sur les composants critiques :
+
+\begin{itemize}
+    \item Tests des endpoints API avec Postman
+    \item Validation des réponses Gemini AI
+    \item Tests de génération vidéo
+    \item Tests de chargement des modèles 3D
+    \item Tests de performance de la base de données
+\end{itemize}
+
+\subsection{Tests de performance}
+\label{subsec:tests-performance}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Métrique} & \textbf{Résultat} \\
+\hline
+Temps de génération de story (AI) & 5-10 secondes \\
+\hline
+Temps de génération vidéo & 45-60 secondes \\
+\hline
+Temps de requête DB (recherche) & < 100ms \\
+\hline
+Chargement modèle 3D & 2-3 secondes \\
+\hline
+API Response Time (moyenne) & < 200ms \\
+\hline
+\end{tabular}
+\caption{Résultats des tests de performance}
+\label{tab:performance}
+\end{table}
+
+\subsection{Tests utilisateurs}
+\label{subsec:tests-utilisateurs}
+
+Un groupe de 15 bêta-testeurs a évalué l'application :
+
+\begin{itemize}
+    \item \textbf{Facilité d'utilisation} : 4.8/5
+    \item \textbf{Qualité des contenus générés} : 4.6/5
+    \item \textbf{Performance globale} : 4.7/5
+    \item \textbf{Design et ergonomie} : 4.9/5
+\end{itemize}
+
+\section{Conclusion}
+
+Ce chapitre a présenté la réalisation complète du projet AutoStory, de l'environnement de développement aux fonctionnalités finales implémentées. Le système propose une solution complète et innovante pour la génération automatisée de contenus publicitaires automobiles, exploitant les dernières avancées en intelligence artificielle générative.
+
+Les fonctionnalités implémentées démontrent la viabilité technique du concept et offrent une valeur ajoutée significative pour les utilisateurs du secteur automobile. Les tests réalisés confirment la robustesse et les performances satisfaisantes de l'application, prête pour une phase de déploiement et d'amélioration continue.

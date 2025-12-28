@@ -120,8 +120,6 @@
 \begin{titlepage}
     \centering
     \includegraphics[width=0.35\textwidth]{images/logos/emsi_logo.png}\par\vspace{1cm}
-    {\scshape\LARGE École Marocaine des Sciences de l'Ingénieur \par}
-    \vspace{0.8cm}
     {\scshape\Large EMSI \par}
     \vspace{0.5cm}
     {\scshape\large Filière : Méthodes Informatiques Appliquées à la Gestion des Entreprises - MIAGE\par}
@@ -129,11 +127,16 @@
     \vspace{1.5cm}
     {\huge\bfseries Rapport de Projet de Fin d'Année\par}
     \vspace{0.5cm}
+    
+    % Logo AutoStory
+    \includegraphics[width=0.1\textwidth]{images/autostory-logo.png}\par
+    \vspace{0.5cm}
+    
     {\Large\bfseries AutoStory\par}
     \vspace{0.3cm}
     {\large Générateur intelligent de contenus publicitaires\par}
     {\large pour le secteur automobile\par}
-    \vspace{2cm}
+    \vspace{1.5cm}
     {\Large Réalisé par\par}
     \vspace{0.5cm}
     {\large 
@@ -147,7 +150,7 @@
     M. RAOUYANE
     \vfill
     {\large Année Universitaire 2025-2026\par}
-    {\large Dfécembre 2026\par}
+    {\large Décembre 2025\par}
 \end{titlepage}
 
 % Page de validation
@@ -210,17 +213,17 @@ Enfin, nous adressons un grand merci à nos familles et nos amis pour leur souti
 % Résumé
 \chapter*{Résumé}
 \addcontentsline{toc}{chapter}{Résumé}
-Ce rapport présente le \textbf{Projet de Fin d'Année (PFA)} intitulé \textit{AutoStory}, réalisé à l'\textbf{École Marocaine des Sciences de l'Ingénieur (EMSI)} dans le cadre de la filière \textbf{MIAGE}. L'objectif principal de ce projet est le développement d'un \textbf{système automatisé de génération de vidéos publicitaires} pour le secteur automobile, exploitant les capacités des \textbf{Large Language Models (LLMs)} et des technologies de synthèse vocale.
+Ce rapport présente le \textbf{Projet de Fin d'Année (PFA)} intitulé \textit{AutoStory}, réalisé à l'\textbf{École Marocaine des Sciences de l'Ingénieur (EMSI)} dans le cadre de la filière \textbf{MIAGE}. L'objectif principal de ce projet est le développement d'un \textbf{système automatisé de génération de contenus publicitaires multimédia} pour le secteur automobile, exploitant les capacités des \textbf{Large Language Models (LLMs)} et des technologies web modernes.
 \vspace{1em}
 
-La solution développée se compose d'un \textbf{backend Python} utilisant \textbf{Google Gemini AI 2.5 Flash} pour la génération de scripts narratifs techniques, \textbf{gTTS} pour la synthèse vocale française, et \textbf{MoviePy} pour la composition vidéo automatisée. Un \textbf{frontend React/TypeScript} est en cours de développement pour offrir une interface utilisateur moderne et intuitive. Le système permet de générer des vidéos publicitaires personnalisées en environ 3 minutes, adaptées au style du véhicule (sportif, luxe, familial, écologique).
+La solution développée se compose d'un \textbf{backend Node.js/Express} utilisant \textbf{Google Gemini AI 2.5 Flash} pour la génération de scripts narratifs techniques, \textbf{Puppeteer} pour la composition vidéo automatisée, et \textbf{MongoDB} pour le stockage des données. Le \textbf{frontend React/TypeScript} offre une interface utilisateur moderne et intuitive avec des visualisations 3D interactives via \textbf{Three.js}. Le système permet de générer des contenus publicitaires personnalisés (texte, vidéo, PDF, 3D) adaptés au style du véhicule.
 \vspace{1em}
 
 Ce projet académique a permis d'acquérir une expérience enrichissante en matière d'\textbf{intelligence artificielle générative}, de \textbf{développement full-stack}, d'\textbf{architecture logicielle modulaire}, et de traitement automatisé du langage naturel, tout en développant une solution innovante pour le marketing automobile.
 \vspace{1em}
 
 \bigskip
-\textbf{Mots-clés :} Intelligence Artificielle, LLM, Gemini AI, Python, React, Génération automatique de contenu, Marketing automobile, Text-to-Speech, Composition vidéo.
+\textbf{Mots-clés :} Intelligence Artificielle, LLM, Gemini AI, Node.js, JavaScript, React, Génération automatique de contenu, Marketing automobile, Three.js, MongoDB.
 
 % TOC et listes
 \clearpage
@@ -243,9 +246,9 @@ Ce projet académique a permis d'acquérir une expérience enrichissante en mati
 \input{introduction}
 \input{contexte_general}
 \input{analyse_et_specification_de_besoin}
-\input{conception}
-\input{realisation}
-\input{conclusion}
+\input{conception_new}
+\input{realisation_new}
+\input{conclusion_new}
 
 % Bibliographie
 \nocite{*}

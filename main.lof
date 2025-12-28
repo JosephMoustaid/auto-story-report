@@ -3,18 +3,35 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture du projet}}{24}{figure.caption.7}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Approche de sécurité de l’application}}{26}{figure.caption.8}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Diagramme de cas d'utilisation du module réservation}}{27}{figure.caption.9}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Diagramme de cas d'utilisation du module véhicule}}{29}{figure.caption.14}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Diagramme de cas d'utilisation du module agences}}{31}{figure.caption.19}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Diagramme de séquence – Processus d’authentification}}{33}{figure.caption.24}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Diagramme de séquence – Processus de réservation}}{34}{figure.caption.25}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Diagramme de classes du module utilisateur}}{36}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Diagramme de classes du module réservation}}{37}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Diagramme de classes du module agence}}{38}{figure.caption.28}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Diagramme de classes du module véhicule}}{39}{figure.caption.29}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Diagramme de classes du module Fleet}}{41}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagramme de cas d'utilisation du système AutoStory}}{21}{figure.caption.7}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Diagramme de classes du système AutoStory}}{22}{figure.caption.8}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Diagramme de séquence - Génération de story}}{23}{figure.caption.9}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Diagramme de séquence - Génération de scène 3D}}{23}{figure.caption.10}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Logos des principaux outils de développement}}{34}{figure.caption.14}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Technologies frontend principales}}{34}{figure.caption.15}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Technologies backend}}{35}{figure.caption.16}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Architecture globale du système AutoStory}}{35}{figure.caption.17}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Interface de connexion}}{36}{figure.caption.18}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Tableau de bord principal}}{37}{figure.caption.19}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Page de navigation du catalogue}}{37}{figure.caption.20}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Système de filtres avancés}}{38}{figure.caption.21}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Classement des véhicules les plus performants}}{39}{figure.caption.22}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Page de détails - Ford Fiesta}}{39}{figure.caption.23}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Spécifications techniques détaillées}}{40}{figure.caption.24}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Informations générées par l'IA}}{40}{figure.caption.25}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Catalogue des marques automobiles}}{41}{figure.caption.26}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Page de détails d'une marque}}{41}{figure.caption.27}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces GenAI - Étape 1 : Recherche et sélection}}{42}{figure.caption.28}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces GenAI - Étape 2 : Configuration des paramètres}}{42}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces GenAI - Étape 3 : Choix des exports}}{43}{figure.caption.30}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Assistant AI conversationnel}}{43}{figure.caption.31}%
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Interface du recommandeur AI}}{44}{figure.caption.32}%
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Résultats des recommandations}}{44}{figure.caption.33}%
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Comparateur de véhicules avec analyse AI}}{45}{figure.caption.34}%
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Timeline historique d'une marque}}{45}{figure.caption.35}%
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Vue 3D interactive - Porsche 911}}{46}{figure.caption.36}%
+\contentsline {figure}{\numberline {5.24}{\ignorespaces Annotations 3D interactives}}{47}{figure.caption.37}%
+\contentsline {figure}{\numberline {5.25}{\ignorespaces Mode Ghost - Visualisation des internals}}{47}{figure.caption.38}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -134,9 +134,10 @@ Les besoins non-fonctionnels définissent les contraintes et les critères de qu
 
 \textbf{BNF6 : Documentation}
 \begin{itemize}
-    \item Le code doit être commenté et documenté (docstrings Python)
+    \item Le code doit être commenté et documenté (JSDoc pour JavaScript)
     \item Un guide d'utilisation doit être fourni pour les utilisateurs
     \item Une documentation technique doit être disponible pour les développeurs
+    \item Les endpoints API doivent être documentés (Postman collections)
 \end{itemize}
 
 \subsection{Sécurité}
@@ -174,10 +175,12 @@ Les besoins non-fonctionnels définissent les contraintes et les critères de qu
 
 \subsection{Contraintes technologiques}
 \begin{itemize}
-    \item \textbf{Backend :} Python 3.10+, FastAPI
+    \item \textbf{Backend :} Node.js 18+, Express.js 4+
+    \item \textbf{Base de données :} MongoDB 6+, Mongoose 7+
     \item \textbf{Frontend :} React 18+, TypeScript 5+
+    \item \textbf{3D Graphics :} Three.js, WebGL
     \item \textbf{LLM :} Google Gemini 2.5 Flash
-    \item \textbf{TTS :} gTTS (Google Text-to-Speech)
+    \item \textbf{Video Generation :} Puppeteer (headless browser)
     \item \textbf{Composition vidéo :} MoviePy, Pillow
     \item \textbf{Format vidéo :} MP4 (H.264)
 \end{itemize}

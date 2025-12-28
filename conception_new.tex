@@ -22,16 +22,145 @@ AutoStory adopte une \textbf{architecture modulaire} composée de plusieurs modu
     \item \textbf{Module de Composition Vidéo} : Assemble images et audio en vidéo finale
 \end{itemize}
 
+\section{Modélisation UML}
+\label{sec:modelisation-uml}
+
+\subsection{Diagramme de cas d'utilisation}
+\label{subsec:diagramme-cas-utilisation}
+
+Le diagramme de cas d'utilisation présente les principales interactions entre les acteurs et le système AutoStory :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{images/chapter-4/uml diagramms/use-case-diagramm.png}
+\caption{Diagramme de cas d'utilisation du système AutoStory}
+\label{fig:use-case-diagram}
+\end{figure}
+
+\textbf{Acteurs principaux :}
+\begin{itemize}
+    \item \textbf{Utilisateur} : Interagit avec le système pour générer des contenus
+    \item \textbf{Administrateur} : Gère le système et les utilisateurs
+    \item \textbf{Google Gemini API} : Service externe de génération de contenu IA
+\end{itemize}
+
+\textbf{Cas d'utilisation :}
+\begin{itemize}
+    \item Rechercher des véhicules
+    \item Consulter les détails d'un véhicule
+    \item Générer une story AI
+    \item Générer une vidéo promotionnelle
+    \item Exporter en PDF
+    \item Visualiser en 3D
+    \item Comparer des véhicules
+    \item Obtenir des recommandations
+    \item Gérer son profil
+\end{itemize}
+
+\subsection{Diagramme de classes}
+\label{subsec:diagramme-classes}
+
+Le diagramme de classes illustre la structure des principales entités du système :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/chapter-4/uml diagramms/classs-diagramm.jpg}
+\caption{Diagramme de classes du système AutoStory}
+\label{fig:class-diagram}
+\end{figure}
+
+\textbf{Classes principales :}
+
+\begin{itemize}
+    \item \textbf{User} : Représente un utilisateur du système
+    \begin{itemize}
+        \item Attributs : id, name, email, password, role, createdAt
+        \item Méthodes : register(), login(), updateProfile()
+    \end{itemize}
+    
+    \item \textbf{Vehicle} : Modélise un véhicule automobile
+    \begin{itemize}
+        \item Attributs : id, make, model, year, engine, specifications
+        \item Méthodes : getDetails(), getSpecs(), getImages()
+    \end{itemize}
+    
+    \item \textbf{Story} : Représente une narrative générée par l'IA
+    \begin{itemize}
+        \item Attributs : id, vehicleId, content, tone, language
+        \item Méthodes : generate(), export(), translate()
+    \end{itemize}
+    
+    \item \textbf{Video} : Encapsule une vidéo générée
+    \begin{itemize}
+        \item Attributs : id, storyId, url, duration, format
+        \item Méthodes : generate(), download(), stream()
+    \end{itemize}
+    
+    \item \textbf{AIService} : Service d'intégration avec Gemini
+    \begin{itemize}
+        \item Méthodes : generateText(), analyzeImage(), chat()
+    \end{itemize}
+\end{itemize}
+
+\subsection{Diagrammes de séquence}
+\label{subsec:diagrammes-sequence}
+
+\subsubsection{Génération de story}
+
+Le diagramme suivant détaille le processus de génération d'une narrative AI :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/chapter-4/uml diagramms/generate-story-sequence-diagramm.png}
+\caption{Diagramme de séquence - Génération de story}
+\label{fig:sequence-story}
+\end{figure}
+
+\textbf{Flux d'exécution :}
+\begin{enumerate}
+    \item L'utilisateur sélectionne un véhicule et configure les paramètres (tone, language)
+    \item Le frontend envoie une requête POST au backend
+    \item Le backend récupère les données du véhicule depuis MongoDB
+    \item Le service AI construit un prompt optimisé
+    \item L'API Gemini génère la narrative
+    \item Le backend traite et valide la réponse
+    \item La story est sauvegardée en base de données
+    \item Le résultat est retourné au frontend pour affichage
+\end{enumerate}
+
+\subsubsection{Génération de scène 3D}
+
+Ce diagramme montre le processus de création d'une visualisation 3D :
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/chapter-4/uml diagramms/generate-3d-scene-sequence-diagramm.png}
+\caption{Diagramme de séquence - Génération de scène 3D}
+\label{fig:sequence-3d}
+\end{figure}
+
+\textbf{Étapes principales :}
+\begin{enumerate}
+    \item L'utilisateur demande la visualisation 3D d'un véhicule
+    \item Le frontend charge Three.js et initialise le renderer
+    \item Le loader récupère le modèle 3D (.glb/.gltf)
+    \item La scène est construite avec lumières et caméras
+    \item Les annotations interactives sont positionnées
+    \item Le mode Ghost est configuré (vue transparente)
+    \item La boucle de rendu démarre pour l'interaction utilisateur
+    \item L'utilisateur peut manipuler la caméra et interagir avec les hotspots
+\end{enumerate}
+
 \subsection{Architecture technique}
 \label{subsec:architecture-technique}
 
 Le système repose sur une architecture \textbf{Backend-Frontend} :
 
 \begin{itemize}
-    \item \textbf{Backend Python} : API REST construite avec FastAPI, gérant la logique métier
+    \item \textbf{Backend Node.js/Express} : API REST construite avec Express.js, gérant la logique métier
     \item \textbf{Frontend React} : Interface utilisateur moderne développée en TypeScript
-    \item \textbf{Services externes} : Google Gemini API, gTTS
-    \item \textbf{Stockage} : Fichiers locaux pour images, audio et vidéos générées
+    \item \textbf{Services externes} : Google Gemini API, Wikipedia API, Puppeteer
+    \item \textbf{Stockage} : MongoDB pour les données, système de fichiers pour les médias générés
 \end{itemize}
 
 \subsection{Flux de traitement}
@@ -200,35 +329,38 @@ Assemblage des images du véhicule avec la narration audio pour produire la vid�
 \section{Architecture Backend}
 \label{sec:architecture-backend}
 
-\subsection{Structure du projet Python}
+\subsection{Structure du projet Node.js}
 \label{subsec:structure-projet}
 
 Le backend est organisé de manière modulaire :
 
 \begin{verbatim}
 backend/
-├── app/
-│   ├── main.py              # Point d'entrée FastAPI
-│   ├── api/
-│   │   └── routes/          # Endpoints REST
-│   ├── core/
-│   │   ├── config.py        # Configuration
-│   │   └── security.py      # Sécurité
+├── src/
+│   ├── server.js            # Point d'entrée Express
+│   ├── routes/
+│   │   ├── auth.js          # Routes d'authentification
+│   │   ├── dataset.js       # Routes véhicules
+│   │   ├── ai.js            # Routes génération AI
+│   │   └── export.js        # Routes export
+│   ├── controllers/
+│   │   ├── aiController.js  # Logique génération
+│   │   └── authController.js
 │   ├── models/
-│   │   ├── vehicle.py       # Modèles de données
-│   │   └── video.py
+│   │   ├── Car.js           # Modèle MongoDB véhicule
+│   │   └── User.js          # Modèle utilisateur
 │   ├── services/
-│   │   ├── classifier.py    # Module classification
-│   │   ├── generator.py     # Module génération
-│   │   ├── tts.py           # Module synthèse vocale
-│   │   └── video_composer.py # Module composition
-│   └── utils/
-│       └── helpers.py       # Utilitaires
-├── storage/
-│   ├── uploads/             # Images uploadées
-│   ├── audio/               # Fichiers audio
-│   └── videos/              # Vidéos générées
-└── requirements.txt
+│   │   ├── aiService.js     # Service Gemini AI
+│   │   ├── videoService.js  # Génération vidéo
+│   │   ├── imageService.js  # Récupération images
+│   │   └── exportService.js # Export PDF
+│   ├── middleware/
+│   │   ├── auth.js          # Middleware JWT
+│   │   └── errorHandler.js
+│   └── config/
+│       └── db.js            # Configuration MongoDB
+├── exports/                 # Médias générés
+└── package.json
 \end{verbatim}
 
 \subsection{API REST}
@@ -353,15 +485,15 @@ L'interface comprend trois pages principales :
 \hline
 \rowcolor{blue!25} \textbf{Technologie} & \textbf{Version} & \textbf{Justification} \\
 \hline
-Python & 3.10+ & Écosystème riche en IA/ML, syntaxe claire \\
+Node.js & 18+ & Performance async, écosystème npm riche \\
 \hline
-FastAPI & 0.100+ & Performance, async, documentation auto \\
+Express.js & 4.18+ & Framework web léger et flexible \\
 \hline
-MoviePy & 1.0+ & Manipulation vidéo intuitive \\
+MongoDB & 6+ & Base NoSQL scalable, schéma flexible \\
 \hline
-gTTS & 2.5+ & Synthèse vocale gratuite et fiable \\
+Mongoose & 7+ & ODM pour MongoDB, validation de schémas \\
 \hline
-Pillow & 10.0+ & Traitement d'images \\
+Puppeteer & 21+ & Génération vidéo via navigateur headless \\
 \hline
 Google Gemini & 2.5 Flash & LLM puissant, rapide et accessible \\
 \hline
@@ -410,7 +542,7 @@ Axios & 1.6+ & Client HTTP simple et robuste \\
 \label{subsec:gestion-erreurs}
 
 \begin{itemize}
-    \item Logging structuré (Python logging)
+    \item Logging structuré (Winston/Morgan)
     \item Messages d'erreur explicites pour l'utilisateur
     \item Retry automatique pour les appels API externes
     \item Nettoyage des fichiers temporaires en cas d'échec
@@ -420,10 +552,10 @@ Axios & 1.6+ & Client HTTP simple et robuste \\
 \label{subsec:performance-system}
 
 \begin{itemize}
-    \item Traitement asynchrone des requêtes (FastAPI async)
+    \item Traitement asynchrone des requêtes (async/await Node.js)
     \item Optimisation des images avant traitement
-    \item Cache des résultats de classification
-    \item Compression des vidéos générées
+    \item Indexes MongoDB pour requêtes rapides
+    \item Compression des médias générés
 \end{itemize}
 
 \section*{Conclusion}

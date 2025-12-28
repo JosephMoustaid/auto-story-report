@@ -2,111 +2,136 @@
 \contentsline {chapter}{Dédicaces}{1}{chapter*.1}%
 \contentsline {chapter}{Remerciements}{2}{chapter*.2}%
 \contentsline {chapter}{Résumé}{3}{chapter*.3}%
-\contentsline {chapter}{Liste des figures}{8}{chapter*.3}%
-\contentsline {chapter}{Liste des tableaux}{9}{chapter*.3}%
-\contentsline {chapter}{Liste des sigles et abréviations}{10}{chapter*.4}%
-\contentsline {chapter}{\numberline {1}Introduction}{11}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Contexte Général du Projet AutoStory}{13}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Introduction}{13}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Le marketing automobile à l'ère du digital}{13}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Évolution du secteur automobile}{13}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Les défis de la production vidéo traditionnelle}{13}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}L'intelligence artificielle générative}{14}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Les Large Language Models (LLMs)}{14}{subsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.1.1}Google Gemini 2.5 Flash}{14}{subsubsection.2.3.1.1}%
-\contentsline {subsection}{\numberline {2.3.2}La synthèse vocale (Text-to-Speech)}{14}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}La composition vidéo programmatique}{14}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}État de l'art des solutions existantes}{15}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Solutions commerciales}{15}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Positionnement d'AutoStory}{15}{subsection.2.4.2}%
-\contentsline {section}{\numberline {2.5}Objectifs et portée du projet}{15}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Objectifs principaux}{15}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Périmètre du projet}{16}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Valeur ajoutée}{16}{subsection.2.5.3}%
-\contentsline {section}{\numberline {2.6}Conclusion}{16}{section.2.6}%
-\contentsline {chapter}{\numberline {3}Analyse et Spécification des Besoins}{17}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introduction}{17}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Besoins fonctionnels}{17}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Génération de scripts narratifs}{17}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Classification des véhicules}{18}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Synthèse vocale}{18}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Composition vidéo}{18}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Interface utilisateur}{18}{subsection.3.2.5}%
-\contentsline {section}{\numberline {3.3}Besoins non-fonctionnels}{19}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Performance}{19}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Fiabilité}{19}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Maintenabilité}{20}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Sécurité}{20}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Scalabilité}{20}{subsection.3.3.5}%
-\contentsline {subsection}{\numberline {3.3.6}Utilisabilité}{20}{subsection.3.3.6}%
-\contentsline {section}{\numberline {3.4}Contraintes techniques}{21}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Contraintes technologiques}{21}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Contraintes d'environnement}{21}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}Spécifications techniques}{21}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Architecture système}{21}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Format des données}{21}{subsection.3.5.2}%
-\contentsline {section}{\numberline {3.6}Conclusion}{22}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Analyse et Conception}{23}{chapter.4}%
-\contentsline {section}{Introduction}{23}{section*.6}%
-\contentsline {section}{\numberline {4.1}Architecture de la solution}{24}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Vue d'ensemble de l'architecture}{24}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Architecture globale du projet}{25}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Approche de sécurité de l’application}{25}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}Conception et modélisation}{25}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Diagrammes de cas d'utilisation}{26}{subsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.1.1}Diagramme de cas d’utilisation du module gestion des réservations}{26}{subsubsection.4.2.1.1}%
-\contentsline {paragraph}{Cas d'utilisation : Effectuer une réservation}{27}{paragraph*.10}%
-\contentsline {paragraph}{Cas d'utilisation : Modifier une réservation}{28}{paragraph*.12}%
-\contentsline {subsubsection}{\numberline {4.2.1.2}Diagramme de cas d’utilisation du module gestion des véhicules}{28}{subsubsection.4.2.1.2}%
-\contentsline {paragraph}{Cas d'utilisation : Ajouter un véhicule}{29}{paragraph*.15}%
-\contentsline {paragraph}{Cas d'utilisation : Assigner un véhicule à une agence}{29}{paragraph*.17}%
-\contentsline {subsubsection}{\numberline {4.2.1.3}Diagramme de cas d’utilisation du module gestion des agences}{30}{subsubsection.4.2.1.3}%
-\contentsline {paragraph}{Cas d'utilisation : Ajouter une nouvelle agence}{31}{paragraph*.20}%
-\contentsline {paragraph}{Cas d'utilisation : Consulter les détails d’une agence spécifique}{31}{paragraph*.22}%
-\contentsline {subsection}{\numberline {4.2.2}Diagrammes de séquence}{32}{subsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.1}Diagramme de séquence – Processus d’authentification}{32}{subsubsection.4.2.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2.2}Diagramme de séquence – Processus de réservation}{33}{subsubsection.4.2.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Diagrammes de classes}{35}{subsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.3.1}Diagramme de classes de service gestion des utilisateurs}{35}{subsubsection.4.2.3.1}%
-\contentsline {subsubsection}{\numberline {4.2.3.2}Diagramme de classes de service gestion des réservations}{36}{subsubsection.4.2.3.2}%
-\contentsline {subsubsection}{\numberline {4.2.3.3}Diagramme de classes de service gestion des agences}{37}{subsubsection.4.2.3.3}%
-\contentsline {subsubsection}{\numberline {4.2.3.4}Diagramme de classes de service gestion des véhicules}{39}{subsubsection.4.2.3.4}%
-\contentsline {subsubsection}{\numberline {4.2.3.5}Diagramme de classes du module Fleet}{40}{subsubsection.4.2.3.5}%
-\contentsline {section}{Conclusion}{42}{figure.caption.30}%
-\contentsline {chapter}{\numberline {5}Réalisation et Mise en Œuvre}{43}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introduction}{44}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Outils de développement et technologies}{44}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Outils de développement}{44}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Technologies de développement}{44}{subsection.5.2.2}%
-\contentsline {subsubsection}{\numberline {5.2.2.1}Backend}{44}{subsubsection.5.2.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2.2}Frontend}{44}{subsubsection.5.2.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Outils et services complémentaires}{44}{subsection.5.2.3}%
-\contentsline {subsubsection}{\numberline {5.2.3.1}Sécurité et droits d’accès}{44}{subsubsection.5.2.3.1}%
-\contentsline {subsubsection}{\numberline {5.2.3.2}Base de données}{44}{subsubsection.5.2.3.2}%
-\contentsline {subsubsection}{\numberline {5.2.3.3}Tests et développement API}{44}{subsubsection.5.2.3.3}%
-\contentsline {subsection}{\numberline {5.2.4}Mise en place du CI/CD et du versioning}{44}{subsection.5.2.4}%
-\contentsline {section}{\numberline {5.3}Tests et Validation}{44}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Tests unitaires}{44}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Validation des données}{44}{subsection.5.3.2}%
-\contentsline {subsubsection}{\numberline {5.3.2.1}Backend}{44}{subsubsection.5.3.2.1}%
-\contentsline {subsubsection}{\numberline {5.3.2.2}Frontend}{44}{subsubsection.5.3.2.2}%
-\contentsline {section}{\numberline {5.4}Présentation des Interfaces Utilisateur}{44}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Front Office (Application Mobile)}{44}{subsection.5.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.1.1}Interface de connexion (Login)}{44}{subsubsection.5.4.1.1}%
-\contentsline {subsubsection}{\numberline {5.4.1.2}Page d’accueil et catalogue de véhicules}{44}{subsubsection.5.4.1.2}%
-\contentsline {subsubsection}{\numberline {5.4.1.3}Interface de filtres avancés}{44}{subsubsection.5.4.1.3}%
-\contentsline {subsubsection}{\numberline {5.4.1.4}Détails du véhicule sélectionné}{44}{subsubsection.5.4.1.4}%
-\contentsline {subsubsection}{\numberline {5.4.1.5}Options supplémentaires}{44}{subsubsection.5.4.1.5}%
-\contentsline {subsubsection}{\numberline {5.4.1.6}Résumé de la réservation}{44}{subsubsection.5.4.1.6}%
-\contentsline {subsubsection}{\numberline {5.4.1.7}Panier de réservation}{44}{subsubsection.5.4.1.7}%
-\contentsline {subsubsection}{\numberline {5.4.1.8}Paiement sécurisé}{44}{subsubsection.5.4.1.8}%
-\contentsline {subsubsection}{\numberline {5.4.1.9}Confirmation et finalisation}{44}{subsubsection.5.4.1.9}%
-\contentsline {subsubsection}{\numberline {5.4.1.10} Signalement d’un incident}{44}{subsubsection.5.4.1.10}%
-\contentsline {subsection}{\numberline {5.4.2}5.2 Back Office (Application Web)}{44}{subsection.5.4.2}%
-\contentsline {section}{\numberline {5.5}Identification des acteurs}{44}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Cas d’utilisation principaux}{44}{section.5.6}%
-\contentsline {subsection}{\numberline {5.6.1}Processus de réservation}{44}{subsection.5.6.1}%
-\contentsline {section}{\numberline {5.7}Conclusion}{44}{section.5.7}%
-\contentsline {chapter}{\numberline {6}Conclusion et perspectives}{45}{chapter.6}%
-\contentsline {chapter}{Webliographie}{47}{chapter*.31}%
-\contentsline {chapter}{\numberline {A}Annexes}{48}{appendix.a.A}%
+\contentsline {chapter}{Liste des figures}{5}{chapter*.3}%
+\contentsline {chapter}{Liste des tableaux}{6}{chapter*.3}%
+\contentsline {chapter}{Liste des sigles et abréviations}{7}{chapter*.4}%
+\contentsline {chapter}{\numberline {1}Introduction}{8}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Contexte Général du Projet AutoStory}{10}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{10}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Le marketing automobile à l'ère du digital}{10}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Évolution du secteur automobile}{10}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Les défis de la production vidéo traditionnelle}{10}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}L'intelligence artificielle générative}{11}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Les Large Language Models (LLMs)}{11}{subsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.1.1}Google Gemini 2.5 Flash}{11}{subsubsection.2.3.1.1}%
+\contentsline {subsection}{\numberline {2.3.2}La synthèse vocale (Text-to-Speech)}{11}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}La composition vidéo programmatique}{11}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}État de l'art des solutions existantes}{12}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Solutions commerciales}{12}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Positionnement d'AutoStory}{12}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Objectifs et portée du projet}{12}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Objectifs principaux}{12}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Périmètre du projet}{13}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Valeur ajoutée}{13}{subsection.2.5.3}%
+\contentsline {section}{\numberline {2.6}Conclusion}{13}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Analyse et Spécification des Besoins}{14}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{14}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Besoins fonctionnels}{14}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Génération de scripts narratifs}{14}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Classification des véhicules}{15}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Synthèse vocale}{15}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Composition vidéo}{15}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Interface utilisateur}{15}{subsection.3.2.5}%
+\contentsline {section}{\numberline {3.3}Besoins non-fonctionnels}{16}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Performance}{16}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Fiabilité}{16}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Maintenabilité}{17}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Sécurité}{17}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Scalabilité}{17}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.6}Utilisabilité}{17}{subsection.3.3.6}%
+\contentsline {section}{\numberline {3.4}Contraintes techniques}{18}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Contraintes technologiques}{18}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Contraintes d'environnement}{18}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Spécifications techniques}{18}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Architecture système}{18}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Format des données}{18}{subsection.3.5.2}%
+\contentsline {section}{\numberline {3.6}Conclusion}{19}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Conception et Architecture}{20}{chapter.4}%
+\contentsline {section}{Introduction}{20}{section*.6}%
+\contentsline {section}{\numberline {4.1}Architecture globale du système}{20}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Vue d'ensemble}{20}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Modélisation UML}{20}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Diagramme de cas d'utilisation}{20}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Diagramme de classes}{21}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Diagrammes de séquence}{22}{subsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}Génération de story}{22}{subsubsection.4.2.3.1}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}Génération de scène 3D}{23}{subsubsection.4.2.3.2}%
+\contentsline {subsection}{\numberline {4.2.4}Architecture technique}{24}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Flux de traitement}{24}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}Conception des modules}{24}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Module de Classification}{24}{subsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.1}Responsabilités}{24}{subsubsection.4.3.1.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.2}Algorithme de classification}{25}{subsubsection.4.3.1.2}%
+\contentsline {subsubsection}{\numberline {4.3.1.3}Sortie}{25}{subsubsection.4.3.1.3}%
+\contentsline {subsection}{\numberline {4.3.2}Module de Génération de Scripts}{25}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}Responsabilités}{25}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}Structure du prompt}{25}{subsubsection.4.3.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.3}Post-traitement}{26}{subsubsection.4.3.2.3}%
+\contentsline {subsection}{\numberline {4.3.3}Module de Synthèse Vocale}{26}{subsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.3.1}Responsabilités}{26}{subsubsection.4.3.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.3.2}Paramètres de synthèse}{26}{subsubsection.4.3.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3.3}Gestion des erreurs}{26}{subsubsection.4.3.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Module de Composition Vidéo}{26}{subsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.4.1}Responsabilités}{26}{subsubsection.4.3.4.1}%
+\contentsline {subsubsection}{\numberline {4.3.4.2}Pipeline de composition}{27}{subsubsection.4.3.4.2}%
+\contentsline {subsubsection}{\numberline {4.3.4.3}Paramètres d'export}{27}{subsubsection.4.3.4.3}%
+\contentsline {section}{\numberline {4.4}Architecture Backend}{27}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Structure du projet Node.js}{27}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}API REST}{28}{subsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.2.1}Endpoints principaux}{28}{subsubsection.4.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.4.2.2}Format des requêtes}{29}{subsubsection.4.4.2.2}%
+\contentsline {section}{\numberline {4.5}Architecture Frontend}{29}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Structure du projet React}{29}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Gestion de l'état}{30}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Interface utilisateur}{30}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}Choix technologiques}{30}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Backend}{30}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Frontend}{31}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.7}Sécurité et bonnes pratiques}{31}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Sécurité}{31}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Gestion des erreurs}{31}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}Performance}{31}{subsection.4.7.3}%
+\contentsline {section}{Conclusion}{32}{subsection.4.7.3}%
+\contentsline {chapter}{\numberline {5}Réalisation et Mise en Œuvre}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introduction}{33}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Environnement et outils de développement}{33}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Outils de développement}{33}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Stack technologique}{34}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}Frontend}{34}{subsubsection.5.2.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2.2}Backend}{34}{subsubsection.5.2.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.3}Intelligence Artificielle}{35}{subsubsection.5.2.2.3}%
+\contentsline {subsection}{\numberline {5.2.3}Services et API externes}{35}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Architecture de l'application}{35}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Composants principaux}{35}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Fonctionnalités implémentées}{36}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Système d'authentification}{36}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Tableau de bord principal}{36}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Navigation et exploration des véhicules}{37}{subsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.4.3.1}Catalogue de véhicules}{37}{subsubsection.5.4.3.1}%
+\contentsline {subsubsection}{\numberline {5.4.3.2}Filtres avancés}{38}{subsubsection.5.4.3.2}%
+\contentsline {subsubsection}{\numberline {5.4.3.3}Véhicules les plus performants}{38}{subsubsection.5.4.3.3}%
+\contentsline {subsection}{\numberline {5.4.4}Pages de détails}{39}{subsection.5.4.4}%
+\contentsline {subsubsection}{\numberline {5.4.4.1}Détails d'un véhicule}{39}{subsubsection.5.4.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.4.2}Informations AI supplémentaires}{40}{subsubsection.5.4.4.2}%
+\contentsline {subsection}{\numberline {5.4.5}Navigation par marques}{41}{subsection.5.4.5}%
+\contentsline {subsubsection}{\numberline {5.4.5.1}Liste des marques}{41}{subsubsection.5.4.5.1}%
+\contentsline {subsubsection}{\numberline {5.4.5.2}Détails d'une marque}{41}{subsubsection.5.4.5.2}%
+\contentsline {subsection}{\numberline {5.4.6}Fonctionnalités d'Intelligence Artificielle}{41}{subsection.5.4.6}%
+\contentsline {subsubsection}{\numberline {5.4.6.1}Génération automatique de contenus}{41}{subsubsection.5.4.6.1}%
+\contentsline {subsubsection}{\numberline {5.4.6.2}Assistant conversationnel AI}{43}{subsubsection.5.4.6.2}%
+\contentsline {subsubsection}{\numberline {5.4.6.3}Système de recommandations}{43}{subsubsection.5.4.6.3}%
+\contentsline {subsubsection}{\numberline {5.4.6.4}Comparateur intelligent}{44}{subsubsection.5.4.6.4}%
+\contentsline {subsubsection}{\numberline {5.4.6.5}Timeline historique}{45}{subsubsection.5.4.6.5}%
+\contentsline {subsection}{\numberline {5.4.7}Visualisation 3D interactive}{46}{subsection.5.4.7}%
+\contentsline {subsubsection}{\numberline {5.4.7.1}Vue 3D principale}{46}{subsubsection.5.4.7.1}%
+\contentsline {subsubsection}{\numberline {5.4.7.2}Annotations interactives}{46}{subsubsection.5.4.7.2}%
+\contentsline {subsubsection}{\numberline {5.4.7.3}Mode Ghost - Vue interne}{47}{subsubsection.5.4.7.3}%
+\contentsline {section}{\numberline {5.5}Génération de documents}{47}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Tests et validation}{48}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Tests unitaires et d'intégration}{48}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Tests de performance}{48}{subsection.5.6.2}%
+\contentsline {subsection}{\numberline {5.6.3}Tests utilisateurs}{48}{subsection.5.6.3}%
+\contentsline {section}{\numberline {5.7}Conclusion}{48}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Conclusion et perspectives}{50}{chapter.6}%
+\contentsline {chapter}{Webliographie}{55}{chapter*.40}%
+\contentsline {chapter}{\numberline {A}Annexes}{56}{appendix.a.A}%

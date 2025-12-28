@@ -48,12 +48,12 @@ Le système AutoStory doit permettre de :
 \subsection{Objectifs techniques}
 
 \begin{itemize}
-    \item Développer un backend Python modulaire et maintenable
+    \item Développer un backend Node.js/Express modulaire et maintenable
     \item Intégrer l'API Google Gemini 2.5 Flash pour la génération de scripts
-    \item Utiliser gTTS pour la synthèse vocale gratuite
-    \item Implémenter MoviePy pour la composition vidéo programmatique
+    \item Utiliser Puppeteer pour la génération vidéo automatisée
+    \item Implémenter MongoDB pour le stockage des données
     \item Concevoir une architecture extensible facilitant l'ajout de nouvelles fonctionnalités
-    \item Développer un frontend React/TypeScript moderne et intuitif
+    \item Développer un frontend React/TypeScript moderne et intuitif avec Three.js
 \end{itemize}
 
 \section{Contraintes du projet}
@@ -72,16 +72,16 @@ Le système AutoStory doit permettre de :
 
 \begin{itemize}
     \item Durée du projet : 1 semestre académique
-    \item Backend Python : priorité absolue (finalisé à 95\%)
-    \item Frontend React : en cours de développement (50\%)
+    \item Backend Node.js : priorité absolue (finalisé à 95\%)
+    \item Frontend React : développement complet avec fonctionnalités avancées
 \end{itemize}
 
 \subsection{Contraintes technologiques}
 
 \begin{itemize}
-    \item Python 3.13
+    \item Node.js 18+
     \item Compatible Linux, macOS et Windows
-    \item Dépendances open-source et gratuites
+    \item Dépendances open-source (npm packages)
     \item Gestion sécurisée des clés API
 \end{itemize}
 
@@ -126,18 +126,19 @@ Interface utilisateur & Frontend React pour saisie des caractéristiques et pré
 \subsection{Livrables techniques}
 
 \begin{enumerate}
-    \item \textbf{Backend Python} :
+    \item \textbf{Backend Node.js/Express} :
     \begin{itemize}
-        \item Module \texttt{autostory\_tech.py} (API REST)
-        \item Module \texttt{technical\_storytelling.py} (génération scripts)
-        \item Module \texttt{car\_styles.py} (classification)
-        \item Module \texttt{video\_generator.py} (composition vidéo)
-        \item Fichiers de configuration et utilitaires
+        \item API REST compl\u00e8te avec authentification JWT
+        \item Services de g\u00e9n\u00e9ration AI (Gemini integration)
+        \item Services de g\u00e9n\u00e9ration vid\u00e9o (Puppeteer)
+        \item Services d'export (PDF, JSON, Markdown)
+        \item Mod\u00e8les MongoDB (User, Car, Generation History)
+        \item Middleware d'authentification et gestion d'erreurs
     \end{itemize}
     
-    \item \textbf{Frontend React} (en cours de développement) :
+    \item \textbf{Frontend React/TypeScript} :
     \begin{itemize}
-        \item Interface de saisie des caractéristiques du véhicule
+        \item Interface de saisie des caract\u00e9ristiques du v\u00e9hicule
         \item Composant de prévisualisation vidéo
         \item Dashboard de gestion
     \end{itemize}
@@ -164,11 +165,12 @@ Interface utilisateur & Frontend React pour saisie des caractéristiques et pré
 Le projet sera considéré comme réussi si :
 
 \begin{itemize}
-    \item Le backend Python génère des vidéos fonctionnelles en moins de 5 minutes
-    \item Les scripts générés sont cohérents et adaptés au style du véhicule
-    \item La qualité audio est acceptable pour un usage professionnel
-    \item L'architecture logicielle est modulaire et documentée
-    \item Le frontend React (même partiellement développé) démontre la faisabilité de l'interface
+    \item Le backend Node.js génère des contenus multimédias fonctionnels rapidement
+    \item Les scripts générés par l'IA sont cohérents et adaptés au style du véhicule
+    \item Les vidéos, PDFs et visualisations 3D sont de qualité professionnelle
+    \item L'architecture logicielle est modulaire, scalable et bien documentée
+    \item Le frontend React offre une expérience utilisateur complète et intuitive
+    \item La base de données MongoDB contient plus de 10,000 véhicules accessibles
 \end{itemize}
 
 \section{Conclusion}
